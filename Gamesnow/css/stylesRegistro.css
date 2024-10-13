@@ -95,20 +95,22 @@ body {
 
 
 h2 {
-    font-size: 1.5rem;
+    font-size: 2rem;
     color: black;
+    font-weight: 200;
     margin-bottom: 1vh;
 }
 
 p {
     color: black;
+    
     margin: 1vh 0;
 }
 
 form label {
     display: block;
     margin: 0.5em 0 0.2em;
-    font-weight: bold;
+    font-weight: 600;
     color: black;
 }
 
@@ -141,7 +143,7 @@ input[type="text"], input[type="password"], input[type="email"] {
 button {
     width: 100%;
     padding: 0.8em;
-    background-color: #006666;
+    background-color: #1e9090;
     border: none;
     color: #fff;
     font-size: 1rem;
@@ -153,7 +155,7 @@ button {
 }
 button:hover{
     background-color: white;
-    color: #006666;
+    color: #1e9090;
 }
 h1{
     font-family: "Orbitron", sans-serif;
