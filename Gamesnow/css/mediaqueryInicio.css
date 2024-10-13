@@ -15,11 +15,11 @@
     }
     .background-image {
         position: absolute;
-        
         width: 100%; 
         background-image: url("../img/back.jpg"); 
         background-size: cover;
         opacity: 0.3;
+        
         height: 100%;
     }
     .register {
