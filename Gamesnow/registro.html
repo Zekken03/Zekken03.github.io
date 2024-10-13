@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+    <link rel="stylesheet" href="./css/stylesRegistro.css">
+    <link rel="stylesheet" href="./css/mediaqueryRegistro.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="background-image"></div>
+    <div class="games">
+        <div class="logo">
+            <img src="./img/logo.png" alt="GamesNow Logo">
+        </div>
+        <h1 id="gn">GAMESNOW</h1>
+    </div>
+    <div class="barra">
+        <a href="iniciar.html"><i class="fa-solid fa-arrow-left"></i></a>
+    </div>
+    <div class="container">
+        <div class="form-container">
+            <h2>CREAR CUENTA</h2>
+            <p>Únete a la comunidad para estar al tanto de las noticias del mundo gamer</p>
+            <form>
+                <label for="username">Nombre de usuario:</label>
+                <div class="register">
+                    <input type="text" id="username" name="username" required class="usuario">
+                        
+                </div>
+
+                <label for="password">Contraseña:</label>
+                <div class="register">
+                    <input type="password" id="password" name="password" required class="usuario">
+                    
+                </div>
+
+                <p class="small-text">Su contraseña debe contener al menos 6 caracteres.<br>Debe incluir un número y un símbolo.</p>
+
+                <label for="confirm-password">Repetir contraseña:</label>
+                <div class="register">
+                    <input type="password" id="confirm-password" name="confirm-password" required class="usuario">
+                  
+                </div>
+
+                <label for="email">Correo electrónico:</label>
+                <div class="register">
+                    <input type="email" id="email" name="email" required class="usuario">
+                   
+                </div>
+                
+
+                <label class="checkbox-container">
+                    <input type="checkbox" name="terms" required>
+                    He leído y acepto la &nbsp; <a href="#"> política de privacidad</a>
+                </label>
+
+                <button type="submit">Regístrate en GamesNow</button>
+            </form>
+
+            <div class="social-login">
+                
+                <p>Regístrate con:</p>
+                <div class="brands">
+                    <a href="https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&ved=2ahUKEwjLtKLk5oiJAxVmJ0QIHePbGnUQFnoECBcQAQ&url=https%3A%2F%2Faccounts.google.com%2F&usg=AOvVaw33vbO0yD5ue-bN0tdaehNC&opi=89978449" target="_blank" class="google"><i class="fa-brands fa-google brand-icon"></i></i></a>
+                    <a href="https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwjNh-D05oiJAxXnJUQIHX_yFucQFnoECAgQAQ&url=https%3A%2F%2Fes-la.facebook.com%2Flogin%2Fdevice-based%2Fregular%2Flogin%2F&usg=AOvVaw0lJpkavDe_tmvEx5NB2NC1&opi=89978449" target="_blank" class="fb"><i class="fa-brands fa-facebook brand-icon1"></i></i></a>
+                    <a href="https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwjEq_b65oiJAxUWEUQIHdSXMlQQFnoECAkQAQ&url=https%3A%2F%2Fwww.reddit.com%2Flogin%2F&usg=AOvVaw2wPUCTymtCyGo_b3x6ANL_&opi=89978449" target="_blank" class="reddit"><i class="fa-brands fa-reddit-alien brand-icon2"></i></i></a>
+                    <a href="https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwiBjPSA54iJAxU0l-4BHbiQPGAQFnoECAoQAQ&url=https%3A%2F%2Ftwitter.com%2Flogin&usg=AOvVaw3swNPrVfKaBGiX8TGfSpkN&opi=89978449" target="_blank" class="x"><i class="fa-brands fa-x-twitter brand-icon3"></i></i></a>
+                </div>
+                
+            </div>
+
+            <p class="footer-text">¿Ya tienes una cuenta? <a href="iniciar.html">Inicia sesión</a></p>
+        </div>
+    </div>
+</body>
+</html>

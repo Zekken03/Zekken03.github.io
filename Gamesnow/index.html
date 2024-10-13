@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GamesNow</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/mediaquery.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
@@ -12,7 +13,6 @@
 </head>
 <body>
     <div class="containeer">
-    <!-- Header con logo y barra de navegación -->
         <header>
             <div class="logo">
                 <img src="./img/logo.png" alt="GamesNow Logo">
@@ -22,9 +22,9 @@
                     <div id="name">
                         <h1 id="gn">GAMESNOW</h1>
                     </div>
-                    
+
                     <div id="login">
-                        <button class="login-button">Crear cuenta / Iniciar sesión</button>
+                        <a href="iniciar.html" class="login-button">Crear cuenta / Iniciar sesión</a>
                         <div class="us">
                             <i class="fa-solid fa-user user-icon"></i>
                         </div>
@@ -42,18 +42,17 @@
                     <li><a href="#">Nintendo</a></li>
                     <div class="search-container">
                         <input type="text" placeholder="Buscar" class="search-bar">
-                            <i class="fa-solid fa-magnifying-glass search-icon"></i>       
+                            <i class="fa-solid fa-magnifying-glass search-icon"></i>
                     </div>
                 </ul>
-                
-                
+
+
             </nav>
-        
+
         </header>
         <section id="mainplus">
             <div class="space"></div>
-                <section id="main">                   
-                    <!-- Sección de noticias principales con sombra y bordes -->
+                <section id="main">
                     <section id="analisis">
                         <section class="main-news">
                                 <article class="news-item">
@@ -67,10 +66,7 @@
                                         <img src="./img/dead.png" alt="Noticia 2">
                                         <h2>Dead Rising Deluxe Remaster - Análisis</h2>
                                     </a>
-                                    
                                 </article>
-                          
-                               
                         </section>
                     </section>
                     <section id="guias">
@@ -80,7 +76,7 @@
                                     <img src="./img/rdr.png" alt="Noticia 1">
                                     <h2 class="centrado">Red Dead Redemption II<br>Guía - Trucos - Consejos</h2>
                                 </a>
-                                
+
                                 <h2></h2>
                             </article>
                             <article class="news-item1">
@@ -101,10 +97,9 @@
                                     <h2 class="centrado">Cyberpunk 2077 <br>  Guía - Trucos - Consejos</h2>
                                 </a>
                             </article>
-                        </section>   
+                        </section>
                     </section>
-                    
-                    <!-- Sección de noticias recientes con bordes -->
+
                     <section id="articulos">
                         <section class="recent-news">
                             <h2>ÚLTIMAS NOTICIAS</h2>
@@ -114,7 +109,7 @@
                                         <div id="letra">
                                             <h3>Ubisoft podría ser adquirida por Tencent: ambas compañías están en conversaciones para un posible acuerdo de compra</h3>
                                             <p>"Dominio total del mundo."</p>
-                                            <p>PC - Daniela - Hace 3 horas</p>    
+                                            <p>PC - Daniela - Hace 3 horas</p>
                                         </div>
                                         <div id="noticia">
                                             <img src="./img/ubi.png" alt="Noticia 1">
@@ -151,19 +146,19 @@
                 </section>
             <div class="space"></div>
         </section>
-        <!-- Sección de suscripción con sombra -->
+
         <section class="subscription">
             <h3>Recibe nuestras últimas noticias:</h3>
             <form action="#">
                 <input type="email" placeholder="Escribe tu correo electrónico">
-                <button type="submit">Suscribirse</button>
+                <button type="button">Suscribirse</button>
             </form>
-            <p>Suscribiéndote aceptas nuestras 
+            <p>Suscribiéndote aceptas nuestras
                 <a href="#" class="link-privacidad">políticas de privacidad</a>
             </p>
         </section>
     </div>
-    <!-- Footer con bordes -->
+
     <footer>
         <div class="footer-info">
             <div>
@@ -182,40 +177,41 @@
                     <li><a href="#">Política de privacidad</a></li>
                 </ul>
             </div>
-            
-        </div>
-        <div class="indice">
-            <ul>
-                <li><a class="upper"href="#">Índice</a></li>
-                <li><a href="#analisis">Análisis</a></li>
-                <li><a href="#">Tecnología</a></li>
-                <li><a href="#articulos">Artículos</a></li>
-                <li><a href="#guias">Guías</a></li>
-                <li><a href="#">PC</a></li>
-                <li><a href="#">PlayStation</a></li>
-                <li><a href="#">Xbox</a></li>
-                <li><a href="#">Nintendo</a></li>
 
-            </ul>
-            
-            
         </div>
-        <div class="social-media">
-            <div>
-                <h2>Síguenos:</h2>
-            </div>
-            <div class="redes">
+        <div class="footer-info1">
+            <div class="indice">
                 <ul>
-                    <li><a href="https://www.facebook.com" target="_blank"><i class="fa-brands fa-facebook"></i></a></li>
-                    <li><a href="https://web.whatsapp.com" target="_blank"><i class="fa-brands fa-whatsapp"></i></a></li>
-                    <li><a href="https://www.instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
-                    <li><a href="https://www.youtube.com" target="_blank"><i class="fa-brands fa-youtube"></i></a></li>
-                    <li><a href="https://x.com/?lang=es" target="_blank"><i class="fa-brands fa-x-twitter"></i></a></li>
+                    <li><a class="upper"href="#">Índice</a></li>
+                    <li><a href="#analisis">Análisis</a></li>
+                    <li><a href="#">Tecnología</a></li>
+                    <li><a href="#articulos">Artículos</a></li>
+                    <li><a href="#guias">Guías</a></li>
+                    <li><a href="#">PC</a></li>
+                    <li><a href="#">PlayStation</a></li>
+                    <li><a href="#">Xbox</a></li>
+                    <li><a href="#">Nintendo</a></li>
+    
                 </ul>
-                
+    
+    
+            </div>
+            <div class="social-media">
+                <div>
+                    <h2>Síguenos:</h2>
+                </div>
+                <div class="redes">
+                    <ul>
+                        <li><a href="https://www.facebook.com" target="_blank"><i class="fa-brands fa-facebook"></i></a></li>
+                        <li><a href="https://web.whatsapp.com" target="_blank"><i class="fa-brands fa-whatsapp"></i></a></li>
+                        <li><a href="https://www.instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
+                        <li><a href="https://www.youtube.com" target="_blank"><i class="fa-brands fa-youtube"></i></a></li>
+                        <li><a href="https://x.com/?lang=es" target="_blank"><i class="fa-brands fa-x-twitter"></i></a></li>
+                    </ul>
+    
+                </div>
             </div>
         </div>
-        
     </footer>
 </body>
 </html>
