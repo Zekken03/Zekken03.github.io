@@ -14,17 +14,7 @@
         display: none;
     }
     .background-image {
-        position: absolute;
-        top: 0;
-        left: 0; 
-        bottom: 0;
-        right: 0;
-        width: 100%; 
-        background-image: url("../img/back.jpg"); 
-        background-size: cover;
-        opacity: 0.1;
-        height: 100%;
-        clip-path: none;
+        display: none;
     }
     .games{
         display: flex;
@@ -169,17 +159,7 @@
         display: none;
     }
     .background-image {
-        position: absolute;
-        top: 0;
-        left: 0; 
-        bottom: 0;
-        right: 0;
-        width: 100%; 
-        background-image: url("../img/back.jpg"); 
-        background-size: cover;
-        opacity: 0.1;
-        height: 100%;
-        clip-path: none;
+        display: none;
     }
     .games{
         display: flex;
