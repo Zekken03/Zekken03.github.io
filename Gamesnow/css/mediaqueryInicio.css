@@ -3,11 +3,11 @@
     html {
         min-height: 100vh;
         scroll-behavior: smooth;
-        width: 768px;
+        width: 100vw;
     }
     body {
         overflow-x: hidden;
-        width: 768px;
+        width: 100vw;
         overflow-y: hidden;
     }
     .barra{
@@ -127,11 +127,11 @@
     html {
         min-height: 100vh;
         scroll-behavior: smooth;
-        width: 480px;
+        width: 100vw;
     }
     body {
         overflow-x: hidden;
-        width: 480px;
+        width: 100vw;
         overflow-y: hidden;
     }
     .barra{
