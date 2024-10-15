@@ -24,6 +24,7 @@
         background-size: cover;
         opacity: 0.1;
         height: 100%;
+        clip-path: none;
     }
     .games{
         display: flex;
@@ -178,6 +179,7 @@
         background-size: cover;
         opacity: 0.1;
         height: 100%;
+        clip-path: none;
     }
     .games{
         display: flex;
