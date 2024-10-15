@@ -125,19 +125,25 @@ form{
     height: 25vh;
 }
 
-.button {
-    display: block;
-    width: 97%;
-    padding: 10px;
-    margin-top: 10px;
+button {
+    width: 100%;
+    padding: 0.8em;
     background-color: #1e9090;
-    color: #fff;
     border: none;
-    border-radius: 20px;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 200;
+    border-radius: 5px;
     cursor: pointer;
-    text-decoration: none;
+    margin-top: 1em;
     transition: 0.3s;
+    padding-bottom: 1vh;
 }
+button:hover{
+    background-color: white;
+    color: #1e9090;
+}
+
 .o{
     display: flex;
     justify-content: space-between;
