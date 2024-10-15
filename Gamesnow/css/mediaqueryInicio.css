@@ -1,3 +1,4 @@
+
 /* Tablet */
 @media (max-width: 768px){
     html {
@@ -115,6 +116,7 @@
         justify-content: center;
         gap: 0;
     }
+    
 }
 /* Celular */
 @media (max-width: 480px){

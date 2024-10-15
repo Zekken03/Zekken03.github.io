@@ -1,3 +1,4 @@
+
 /* Tablet */
 @media (max-width: 768px){
     html {
@@ -141,6 +142,9 @@
     .brand-icon3{
         font-size: 7vh;
         
+    }
+    .social-login .brands{
+        width: 100%;
     }
 }
 /* Celular */
@@ -292,5 +296,8 @@
     .brand-icon3{
         font-size: 5vh;
         
+    }
+    .social-login .brands{
+        width: 100%;
     }
 }
