@@ -4,12 +4,13 @@
     html {
         min-height: 100vh;
         scroll-behavior: smooth;
-        width: 100vw;
+        width: 100%;
     }
     body {
         overflow-x: hidden;
-        width: 100vw;
+        width: 100%;
         overflow-y: hidden;
+        display: block;
     }
     .barra{
         display: none;
@@ -45,18 +46,11 @@
         color: #1e9090; 
         font-size: 2rem; 
     }
-    .barra1{
-        background-color: black;
-        height: 1px;
-        width: 35%;
-        position: absolute;
+    .container .login .o .barra1{
+        display: none;
     }
-    .barra2{
-        left: 39vh;
-        background-color: black;
-        height: 1px;
-        width: 35%;
-        position: absolute;
+    .container .login .o .barra2{
+        display: none;
     }
     .container{
         padding: 6.5vh;
@@ -65,7 +59,7 @@
         position: relative;
         z-index: 1;
         background-color: transparent;
-        width: 60vh;  
+        width: 100%;  
         border-radius: 8px;
         text-align: center;
     }
@@ -123,11 +117,11 @@
     html {
         min-height: 100vh;
         scroll-behavior: smooth;
-        width: 100vw;
+        width: 100%;
     }
     body {
         overflow-x: hidden;
-        width: 100vw;
+        width: 100%;
         overflow-y: hidden;
     }
     .barra{
@@ -164,18 +158,11 @@
         color: #1e9090; 
         font-size: 1.5rem; 
     }
-    .barra1{
-        background-color: black;
-        height: 1px;
-        width: 35%;
-        position: absolute;
+    .container .login .o .barra1{
+        display: none;
     }
-    .barra2{
-        left: 36vh;
-        background-color: black;
-        height: 1px;
-        width: 35%;
-        position: absolute;
+    .container .login .o .barra2{
+        display: none;
     }
     .container{
         padding: 5vh;
@@ -184,7 +171,7 @@
         position: relative;
         z-index: 1;
         background-color: transparent;
-        width: 55vh;  
+        width: 100%;  
         border-radius: 8px;
         text-align: center;
     }
@@ -207,19 +194,19 @@
         font-size: 1.3rem;
     }
     .google { 
-        font-size: 1.3rem;
+        font-size: 1.1rem;
     }
 
     .facebook { 
-        font-size: 1.3rem;
+        font-size: 1.1rem;
     }
 
     .reddit { 
-        font-size: 1.3rem;
+        font-size: 1.1rem;
     }
 
     .twitter { 
-        font-size: 1.3rem;
+        font-size: 1.1rem;
     }
     h2{
         font-weight: bold;
@@ -229,6 +216,10 @@
     }
     p{
         font-size: 1.2rem;
+    }
+     #text{
+        width: 100%;
+        font-size: 1em;
     }
     .o{
         display: flex;

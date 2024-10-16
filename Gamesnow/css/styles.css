@@ -10,6 +10,7 @@ body {
     background-color: #9BF2EA;
     width: 100%;
     overflow-x: hidden;
+    height: 100%;
 }
 .containeer{
     min-height: calc(100vh - 40vh);
@@ -140,12 +141,22 @@ nav.navbar > div.contentGames > div#name {
     width: 100%;
     padding-left: 35vh;
 }
+
+.us i{
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    align-self: center;
+    align-items: center;
+
+}
+
 nav.navbar > div.contentGames > div#login {
     display: flex;
     justify-content: center;
     margin-top: 20px;
     position: relative; 
-
+    padding: 0%;
 }
 
 .navbar h1 {
