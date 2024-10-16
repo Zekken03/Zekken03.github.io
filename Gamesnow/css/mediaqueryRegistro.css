@@ -18,17 +18,7 @@
         display: none;
     }
     .games{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        align-self: center;
-        position: absolute;
-        top: 2vh;
-        padding-left: 49vh;
-        left: 10vh; 
-        bottom: 10;
-        width: 10vh;
-        height: 10vh;
+        display: none;
     }
     .container {
         position: relative;
@@ -166,15 +156,7 @@
         display: none;
     }
     .games{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        align-self: center;
-        position: absolute;
-        top: 1vh;
-        padding-left: 38vh;
-        left: 10vh; 
-        bottom: 10;
+        display: none;
 
     }
     .container {
