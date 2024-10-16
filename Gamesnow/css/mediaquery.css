@@ -182,6 +182,12 @@
         font-size: 1.5rem;
     }
 
+    #mainplus #main #guias .main-news1 .news-item1 img{
+        font-size: 1.5rem;
+        width: 100%;
+        height: 70%;
+    }
+
     #mainplus #main #articulos{
         display: flex;
         justify-content: center;
@@ -481,6 +487,12 @@
         font-size: 1.3rem;
     }
 
+    #mainplus #main #guias .main-news1 .news-item1 img{
+        font-size: 1.5rem;
+        width: 100%;
+        height: 70%;
+    }
+    
     #mainplus #main #articulos{
         display: flex;
         justify-content: center;
