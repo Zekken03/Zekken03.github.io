@@ -1,0 +1,141 @@
+
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+html, body{
+    height: 100%;
+}
+
+body{
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); /* Degradado elegante */
+    background-attachment: fixed; /* Hace que el fondo se mantenga fijo al hacer scroll */
+    background-image: url("../img/bg.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size:cover 
+}
+
+.sidebar{
+    position: fixed;
+    background-color: rgb(210, 245, 255);
+    width: 20vh;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.2); /* Sombra suave */
+
+}
+
+.sidebar .sq{
+    width: auto;
+    height: 10vh; /* Aumentar la altura para darle más espacio */
+    background-color: rgb(136, 255, 106);
+    margin-top: 30px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 20px;
+    position: relative;
+    transition: transform 0.3s ease; /* Transición suave */
+    overflow: hidden; /* Para que el texto no se salga */
+    z-index: 2; /* Asegura que el contenedor esté encima */
+}
+
+h1{
+    color:rgb(0, 0, 0);
+    font-size: 40px;
+    background-color:rgba(143, 227, 255, 0.8);
+    text-align: center;
+    border-radius: 10px; /* Bordes redondeados */
+    padding: 10px;
+    transition: background-color 0.3s ease; /* Transición suave en el color de fondo */
+}
+
+h1:hover {
+    background-color: rgba(195, 240, 255, 0.8); /* Cambio sutil al pasar el mouse */
+}
+
+p{
+    color:rgb(0, 0, 0);
+    font-size: 3rem;
+    margin-top: 20px;
+    margin-left: 200px;
+    margin-bottom: 20px;
+}
+h2{
+    color: black;
+    font-size: 3rem;
+    margin-left: 200px;
+    margin-top: 20px;
+}
+
+.border{
+    border-radius: 20px;
+}
+
+.texto{
+    position: absolute; /* Absoluto para que flote encima */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente oscuro */
+    color: white;
+    font-size: 1.0em;
+    text-align: center;
+    opacity: 0; /* Inicialmente invisible */
+    z-index: 3; /* Asegura que esté encima de la imagen */
+    transition: opacity 0.3s ease;
+}
+
+
+.sq:hover .texto {
+    opacity: 1; /* El texto aparece cuando pasas el cursor */
+}
+.sq:hover .texto1 {
+    opacity: 1; /* El texto aparece cuando pasas el cursor */
+}
+
+.sq:hover {
+    transform: scale(1.1); /* Agrandar el cuadro al pasar el mouse */
+}
+
+
+section {
+    padding: 20px 40px;
+    padding-left: 200px;
+    max-width: 1200px; /* Limita el ancho máximo del contenido para evitar que se vea demasiado extendido */
+    margin: 0 auto; /* Centra el contenido */
+}
+
+img {
+    border-radius: 20px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Asegura que la imagen se ajuste al contenedor */
+}
+
+a {
+    width: 100%;
+    height: 100%;
+    position: absolute; /* Hace que el enlace ocupe todo el cuadrado */
+    top: 0;
+    left: 0;
+    z-index: 3; /* Asegura que el enlace esté encima */
+}
+.video-container {
+    display: flex; /* Utiliza Flexbox para centrar */
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente (si es necesario) */
+    margin: 10px auto; /* Espacio alrededor y centrado */
+}

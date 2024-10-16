@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/maqueta1.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <section>
+        <h1>Administración de Procesos y del
+            Procesador
+            </h1>
+    </section>
+    <section>
+        <div class="fondotexto1">
+            <div class="fftexto1">
+                <div class="cont">
+                    <div class="cont1">
+                        <p> <b>> Administrador de Procesos</b></p>
+                        <p>Es parte del sistema operativo que gestiona los procesos en ejecución. Se encarga de asignar recursos como la CPU y memoria, planificar la ejecución de procesos, sincronizarlos y asegurarse de que todo funcione sin problemas.</p>
+                    </div>
+                    <div class="sq">
+                        <img src="./img/proceso.png" alt="Administrador de Proceso" class="border"/>
+                        <div class="texto">Cuando tienes Word, Spotify y el navegador abiertos, el administrador distribuye el tiempo del procesador entre ellos, permitiendo que todo funcione sin interrupciones y sin que una aplicación bloquee a las demás. </div>
+                    </div>
+                </div>
+                <div class="cont">
+                    <div class="sq">
+                        <img src="./img/bloque.jpg" alt="Bloque de Control de Proceso (BCP)" class="border"/>
+                        <div class="texto"> Piensa en el BCP como la ficha que el sistema operativo guarda sobre cada app abierta. Si tienes Spotify, Word y Chrome funcionando, el sistema guarda detalles como el estado de cada uno, cuánto del procesador están usando, y qué está haciendo cada programa en ese momento.</div>
+                    </div>
+                    <div class="cont1">
+                        <p><b>> Bloque de Control de Proceso (BCP)</b></p>
+                        <p>El Bloque de Control de Proceso (BCP) es una estructura de datos utilizada por el sistema operativo para 
+                        almacenar información sobre un proceso. 
+                        <p>Incluye:</p>
+                        <p><b>-</b>Identificador del proceso (PID).</p>
+                        <p><b>-</b>Estado del proceso (ejecutando, bloqueado, etc.).</p>
+                        <p><b>-</b>Contador de programa.</p>
+                        <p><b>-</b>Registros de CPU.</p>
+                        <p><b>-</b>Información de gestión de memoria.</p>
+                        <p><b>-</b>Información de entrada/salida.</p></p>
+                    </div>   
+                </div>
+                <div class="cont">
+                    <div class="cont1">
+                        <p><b>> Estados de un Proceso</b></p>
+                        <p>Los procesos pueden estar en varios estados. 
+                        <p>Los principales son:</p>
+                        <p><b>Nuevo:</b> El proceso está siendo creado.</p>
+                        <p><b>Listo:</b> El proceso está en espera de ser asignado a un procesador.</p>
+                        <p><b>Ejecutando:</b> El proceso está siendo ejecutado por la CPU.</p>
+                        <p><b>Bloqueado:</b> El proceso está esperando que ocurra un evento (como la finalización de una operación de I/O).</p>
+                        <p><b>Terminado:</b> El proceso ha completado su ejecución.</p></p>
+                    </div>
+                    <div class="sq">
+                        <img src="./img/estados.png" alt=" Estados de un Proceso" class="border"/>
+                        <div class="texto">Estás viendo una serie en Netflix (proceso). Mientras el episodio se reproduce, el proceso está en el estado ejecutando. Si pausas el video, el proceso pasa al estado listo, esperando a que le des "play" de nuevo para continuar. Si la conexión a internet se pierde y el video deja de cargar, el proceso puede quedar en estado bloqueado hasta que vuelva la conexión.</div>
+                    </div>
+                </div>
+                <div class="cont">
+                    <div class="sq">
+                        <img src="./img/transicion.png" alt="Transiciones de un Proceso" class="border"/>
+                        <div class="texto"> Abres un documento en Word (transición de creación a listo). Cuando empiezas a escribir, Word pasa a ejecutando. Si minimizas la ventana para abrir otra aplicación, Word pasa de ejecutando a listo. Si haces clic en "guardar" y Word espera a que el disco duro esté disponible, pasa a bloqueado. Cuando se guarda el archivo, vuelve a estar listo o ejecutando según lo que estés haciendo.</div>
+                    </div>
+                    <div class="cont1">
+                        <p><b>> Transiciones de un Proceso</b></p>
+                        <p><b></b>Las transiciones entre estados son:</p>
+                        <p><b>Creación a Listo:</b> El proceso se mueve de nuevo a listo cuando se completa su creación.</p>
+                        <p><b>Listo a Ejecutando:</b> Un planificador asigna la CPU a un proceso listo.</p>
+                        <p><b>Ejecutando a Bloqueado:</b> El proceso se bloquea cuando solicita un recurso que no está disponible.</p>
+                        <p><b>Ejecutando a Listo:</b> Ocurre una interrupción (puede ser por un cambio de contexto) y el proceso se reubica en la cola de listos.</p>
+                        <p><b>Bloqueado a Listo:</b> El evento por el que el proceso estaba bloqueado se completa, y vuelve a la cola de listos.</p>
+                        <p><b>Ejecutando a Terminado:</b> El proceso finaliza su ejecución y se libera la memoria.</p></p>
+                    </div>   
+                </div>
+                <div class="cont">
+                    <div class="cont1">
+                        <p><b>> Hilos o Contextos de Ejecución</b></p>
+                        <p>Un hilo es la unidad más pequeña de procesamiento que puede ser programada. Los hilos comparten el mismo espacio de 
+                        direcciones de un proceso, pero cada hilo tiene su propio conjunto de registros y su propio contador de programa.</p>
+                    </div>
+                    <div class="sq">
+                        <img src="./img/hilos.png" alt="Hilos o Contextos de Ejecución" class="border"/>
+                        <div class="texto">En Word, puedes escribir mientras se guarda automáticamente el archivo cada pocos segundos. Esto ocurre porque Word tiene varios hilos: uno que maneja tu escritura y otro que se encarga del guardado. Ambos hilos funcionan en paralelo sin bloquearse entre sí.</div>
+                    </div>
+                </div>
+                <div class="cont">
+                    <div class="sq">
+                        <img src="./img/sincronizacion.png" alt="Sincronización entre Procesos" class="border"/>
+                        <div class="texto"> Si tú y un amigo están editando un mismo documento en Google Docs al mismo tiempo, el sistema necesita asegurarse de que no ambos hagan cambios en la misma línea simultáneamente. La sincronización garantiza que los cambios se hagan de forma ordenada y coherente.</div>
+                    </div>
+                    <div class="cont1">
+                        <p><b>> Sincronización entre Procesos</b></p>
+                        <p>La sincronización es un mecanismo para asegurar que dos o más procesos o hilos no accedan simultáneamente a recursos 
+                        compartidos, evitando así condiciones de carrera y garantizando la coherencia de datos.</p>
+                    </div>   
+                </div>  
+                <div class="cont">
+                    <div class="cont1">
+                        <p><b>> Semáforo</b></p>
+                        <p>Un semáforo es una estructura de datos que se utiliza para gestionar el acceso a recursos compartidos. Funciona como un 
+                        contador que puede ser incrementado o decrementado. Los semáforos permiten que los procesos esperen (bloqueen) hasta que 
+                        el recurso esté disponible y, al ser liberados, permiten el acceso a otros procesos.</p>
+                    </div>
+                    <div class="sq">
+                        <img src="./img/semaforo.png" alt="Semáforo" class="border"/>
+                        <div class="texto">En una fotocopiadora compartida por varios usuarios, solo una persona puede hacer copias a la vez. El semáforo es como una señal que controla el acceso: si alguien está usando la máquina, el semáforo está "en rojo" y los demás deben esperar. Cuando termina, se pone "en verde" y otro usuario puede usarla. </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </section>
+        <aside class="sidebar">
+            <div class="sq1">
+                <a href="./index.html">
+                    <img src="./img/flecha.png" height="50px" width="50px" alt="Index" class="border" />
+                    <div class="texto">Unidad 1</div>
+                </a>
+            </div>
+            <div class="recursos">
+                <h3>Recursos</h3>
+            </div>
+            <div class="sq">
+                <a href="./docs/Administración de Procesos y del Procesador.pdf" target="_blank">
+                    <img src="./img/mapa.jpg" alt="Mapa Conceptual" class="border"/>
+                    <div class="texto">Mapa Conceptual</div>
+                </a>
+            </div>
+            
+        </aside>
+    </body>
+</html>
