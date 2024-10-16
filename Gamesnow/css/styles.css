@@ -411,11 +411,11 @@ section#mainplus{
 
 .recent-news-item h3 {
     color: black;
-    font-size: 2vw;
+    font-size: 1.9rem;
     margin-right: 10vh;
 }
 .recent-news-item p{
-    font-size: 1vw;
+    font-size: 1rem;
 }
 .recent-news-item .noticia{
     width: 10vh;
