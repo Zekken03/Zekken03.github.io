@@ -5,18 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GamesNow</title>
     <link rel="stylesheet" href="./css/styles.css">
-    <link rel="stylesheet" href="./css/mediaquery.css">
+    <link rel="stylesheet" href="./css/mediaquery.css" media="print" onload="this.media='all'">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" as="style" onload="this.rel='stylesheet'">
+    <noscript>
+        <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+    </noscript>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" 
+          integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" 
+          crossorigin="anonymous" referrerpolicy="no-referrer" media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" 
+              integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" 
+              crossorigin="anonymous" referrerpolicy="no-referrer">
+    </noscript>
     <link rel="icon" href="./img/logo.ico">
 </head>
 <body>
     <div class="containeer">
         <header>
             <div class="logo">
-                <img src="./img/logo.png" alt="GamesNow Logo">
+                <img src="./img/logo.webp" alt="GamesNow Logo">
             </div>
             <nav class="navbar">
                 <div class="contentGames">
@@ -41,10 +51,13 @@
                     <li><a href="#">PlayStation</a></li>
                     <li><a href="#">Xbox</a></li>
                     <li><a href="#">Nintendo</a></li>
-                    <div class="search-container">
-                        <input type="text" placeholder="Buscar" class="search-bar">
-                            <i class="fa-solid fa-magnifying-glass search-icon"></i>
-                    </div>
+                    <li>
+                        <div class="search-container">
+                            <input type="text" placeholder="Buscar" class="search-bar">
+                                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                        </div>
+                    </li>
+                    
                 </ul>
 
 
@@ -58,13 +71,13 @@
                         <section class="main-news">
                                 <article class="news-item">
                                     <a href="https://store.steampowered.com/app/2358720/Black_Myth_Wukong/" target="_blank" alt="Black Myth Wukong">
-                                        <img src="./img/black.png" alt="Noticia 1">
+                                        <img src="./img/black.webp" alt="Noticia 1">
                                         <h2>Black Myth: Wukong - Análisis</h2>
                                     </a>
                                 </article>
                                 <article class="news-item">
                                     <a href="https://store.steampowered.com/app/2527390/Dead_Rising_Deluxe_Remaster/" targe="_blank" alt="Dead Rising">
-                                        <img src="./img/dead.png" alt="Noticia 2">
+                                        <img src="./img/dead.webp" alt="Noticia 2">
                                         <h2>Dead Rising Deluxe Remaster - Análisis</h2>
                                     </a>
                                 </article>
@@ -74,7 +87,7 @@
                         <section class="main-news1">
                             <article class="news-item1">
                                 <a href="https://store.steampowered.com/app/1174180/Red_Dead_Redemption_2/" target="_blank" alt="Red Dead Redemption 2">
-                                    <img src="./img/rdr.png" alt="Noticia 1">
+                                    <img src="./img/rdr.webp" alt="Noticia 1">
                                     <h2 class="centrado">Red Dead Redemption II<br>Guía - Trucos - Consejos</h2>
                                 </a>
 
@@ -82,19 +95,19 @@
                             </article>
                             <article class="news-item1">
                                 <a href="https://www.nintendo.com/es-mx/store/products/the-legend-of-zelda-echoes-of-wisdom-switch/?srsltid=AfmBOopmg5tK3_VgeYWtpDflLYSEW766OAkASGUtrrjEgy1zi1_tuj0G" target="_blank" alt="TLOZ Echoes of Wisdom">
-                                    <img src="./img/zelda.png" alt="Noticia 2">
+                                    <img src="./img/zelda.webp" alt="Noticia 2">
                                     <h2 class="centrado">The Legen of Zelda:<br> Echoes of Wisdom <br> Guía - Trucos - Consejos</h2>
                                 </a>
                             </article>
                             <article class="news-item1">
                                 <a href="https://store.steampowered.com/app/1850570/DEATH_STRANDING_DIRECTORS_CUT/" target="_blank" alt="Death Stranding">
-                                    <img src="./img/stranding.png" alt="Noticia 3">
+                                    <img src="./img/stranding.webp" alt="Noticia 3">
                                     <h2 class="centrado">Death Stranding <br>  Guía - Trucos - Consejos</h2>
                                 </a>
                             </article>
                             <article class="news-item1">
                                 <a href="https://www.google.com/url?sa=i&url=https%3A%2F%2Fstore.epicgames.com%2Fes-MX%2Fp%2Fcyberpunk-2077&psig=AOvVaw2ooD98-S2eKTb9n-_t6o2r&ust=1728593825517000&source=images&cd=vfe&opi=89978449&ved=0CBcQjhxqFwoTCOCrm_aXgokDFQAAAAAdAAAAABAP" target="_blank" alt="Cyberpunk 2077">
-                                    <img src="./img/cyber.png" alt="Noticia 4">
+                                    <img src="./img/cyber.webp" alt="Noticia 4">
                                     <h2 class="centrado">Cyberpunk 2077 <br>  Guía - Trucos - Consejos</h2>
                                 </a>
                             </article>
@@ -113,7 +126,7 @@
                                             <p>PC - Daniela - Hace 3 horas</p>
                                         </div>
                                         <div id="noticia">
-                                            <img src="./img/ubi.png" alt="Noticia 1">
+                                            <img src="./img/ubi.webp" alt="Noticia 1">
                                         </div>
                                         </article>
                                 </a>
@@ -125,7 +138,7 @@
                                             <p>Móviles - Rafael - Hace 7 horas</p>
                                         </div>
                                         <div id="noticia">
-                                            <img src="./img/palworld.png" alt="Noticia 2">
+                                            <img src="./img/palworld.webp" alt="Noticia 2">
                                         </div>
                                     </article>
                                 </a>
@@ -137,7 +150,7 @@
                                             <p>PC - Pamela - Hace 1 día</p>
                                         </div>
                                         <div id="noticia">
-                                            <img src="./img/lag.png" alt="Noticia 3">
+                                            <img src="./img/lag.webp" alt="Noticia 3">
                                         </div>
                                     </article>
                                 </a>

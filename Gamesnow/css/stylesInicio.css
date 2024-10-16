@@ -34,7 +34,7 @@ body {
     right: 0;
     bottom: 0;
     width: 65%; 
-    background-image: url("../img/back.jpg"); 
+    background-image: url("../img/back.webp"); 
     background-size: cover;
     background-position:right;
     clip-path: ellipse(70% 90% at 100% 50%);
