@@ -72,6 +72,12 @@ header {
     pointer-events: none; 
     transition: transform 0.3s ease, font-size 0.3s ease; 
 }
+
+#mainplus #main #analisis .main-news .news-item img{
+    width: 600px;
+    height: 400px;
+}
+
 #mainplus #main #analisis .main-news .news-item:hover h2{
     transform: scale(1.1);
     font-size: 1.2rem;
