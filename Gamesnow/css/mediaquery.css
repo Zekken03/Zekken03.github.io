@@ -426,10 +426,10 @@
     }
 
     .contentGames #login .login-button {
-        width: 87%; 
+        width: 100%; 
         text-align: center;
         font-size: 1.1rem;
-
+        padding: 1vh 0vh;
     }
 
     .containeer{
