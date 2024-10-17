@@ -11,6 +11,7 @@ body {
     width: 100%;
     overflow-x: hidden;
     height: 100%;
+    
 }
 .containeer{
     min-height: calc(100vh - 40vh);
