@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GamesNow</title>
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/mediaquery.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="./img/black.webp" as="image" type="image/webp">
+    <link rel="preload" href="./img/dead.webp" as="image" type="image/webp">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" as="style" onload="this.rel='stylesheet'">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" 
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" 
+        crossorigin="anonymous" referrerpolicy="no-referrer" media="print" onload="this.media='all'">
+    <noscript>
+        <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" 
+            integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" 
+            crossorigin="anonymous" referrerpolicy="no-referrer">
+    </noscript>
+    <link rel="icon" href="./img/logo.ico">
+</head>
+<body>
+    <div class="containeer">
+        <header>
+            <div class="logo">
+                <img src="./img/logo.webp" alt="GamesNow Logo">
+            </div>
+            <nav class="navbar">
+                <div class="contentGames">
+                    <div id="name">
+                        <h1 id="gn">GAMESNOW</h1>
+                    </div>
+
+                    <div id="login">
+                        <a href="iniciar.html" class="login-button">Crear cuenta / Iniciar sesión</a>
+                        <div class="us">
+                            <i class="fa-solid fa-user user-icon"></i>
+                        </div>
+                    </div>
+                </div>
+                <div id="barra"></div>
+                <ul>
+                    <li><a href="#analisis">Análisis</a></li>
+                    <li><a href="#">Tecnología</a></li>
+                    <li><a href="#articulos">Artículos</a></li>
+                    <li><a href="#guias">Guías</a></li>
+                    <li><a href="#">PC</a></li>
+                    <li><a href="#">PlayStation</a></li>
+                    <li><a href="#">Xbox</a></li>
+                    <li><a href="#">Nintendo</a></li>
+                    <li>
+                        <div class="search-container">
+                            <input type="text" placeholder="Buscar" class="search-bar">
+                                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                        </div>
+                    </li>
+                    
+                </ul>
+
+
+            </nav>
+
+        </header>
+        <section id="mainplus">
+            <div class="space"></div>
+                <section id="main">
+                    <section id="analisis">
+                        <section class="main-news">
+                                <article class="news-item">
+                                    <a href="https://store.steampowered.com/app/2358720/Black_Myth_Wukong/" target="_blank" alt="Black Myth Wukong">
+                                        <img src="./img/black.webp" alt="Análisis 1" loading="eager" width="600" height="400">
+                                        <h2>Black Myth: Wukong - Análisis</h2>
+                                    </a>
+                                </article>
+                                <article class="news-item">
+                                    <a href="https://store.steampowered.com/app/2527390/Dead_Rising_Deluxe_Remaster/" targe="_blank" alt="Dead Rising">
+                                        <img src="./img/dead.webp" alt="Análisis 2" loading="lazy" width="600" height="400">
+                                        <h2>Dead Rising Deluxe Remaster - Análisis</h2>
+                                    </a>
+                                </article>
+                        </section>
+                    </section>
+                    <section id="guias">
+                        <section class="main-news1">
+                            <article class="news-item1">
+                                <a href="https://store.steampowered.com/app/1174180/Red_Dead_Redemption_2/" target="_blank" alt="Red Dead Redemption 2">
+                                    <img src="./img/rdr.webp" alt="Guía 1" width="600" height="600" loading="lazy">
+                                    <h2 class="centrado">Red Dead Redemption II<br>Guía - Trucos - Consejos</h2>
+                                </a>
+
+                                <h2></h2>
+                            </article>
+                            <article class="news-item1">
+                                <a href="https://www.nintendo.com/es-mx/store/products/the-legend-of-zelda-echoes-of-wisdom-switch/?srsltid=AfmBOopmg5tK3_VgeYWtpDflLYSEW766OAkASGUtrrjEgy1zi1_tuj0G" target="_blank" alt="TLOZ Echoes of Wisdom">
+                                    <img src="./img/zelda.webp" alt="Guía 2" width="600" height="600" loading="lazy">
+                                    <h2 class="centrado">The Legen of Zelda:<br> Echoes of Wisdom <br> Guía - Trucos - Consejos</h2>
+                                </a>
+                            </article>
+                            <article class="news-item1">
+                                <a href="https://store.steampowered.com/app/1850570/DEATH_STRANDING_DIRECTORS_CUT/" target="_blank" alt="Death Stranding">
+                                    <img src="./img/stranding.webp" alt="Guía 3" width="600" height="600" loading="lazy">
+                                    <h2 class="centrado">Death Stranding <br>  Guía - Trucos - Consejos</h2>
+                                </a>
+                            </article>
+                            <article class="news-item1">
+                                <a href="https://www.google.com/url?sa=i&url=https%3A%2F%2Fstore.epicgames.com%2Fes-MX%2Fp%2Fcyberpunk-2077&psig=AOvVaw2ooD98-S2eKTb9n-_t6o2r&ust=1728593825517000&source=images&cd=vfe&opi=89978449&ved=0CBcQjhxqFwoTCOCrm_aXgokDFQAAAAAdAAAAABAP" target="_blank" alt="Cyberpunk 2077">
+                                    <img src="./img/cyber.webp" alt="Guía 4" width="600" height="600" loading="lazy">
+                                    <h2 class="centrado">Cyberpunk 2077 <br>  Guía - Trucos - Consejos</h2>
+                                </a>
+                            </article>
+                        </section>
+                    </section>
+
+                    <section id="articulos">
+                        <section class="recent-news">
+                            <h2>ÚLTIMAS NOTICIAS</h2>
+                            <div class="news-list">
+                                <a href="#">
+                                    <article class="recent-news-item">
+                                        <div id="letra">
+                                            <h3>Ubisoft podría ser adquirida por Tencent: ambas compañías están en conversaciones para un posible acuerdo de compra</h3>
+                                            <p>"Dominio total del mundo."</p>
+                                            <p>PC - Daniela - Hace 3 horas</p>
+                                        </div>
+                                        <div id="noticia">
+                                            <img src="./img/ubi.webp" alt="Noticia 1" width="600" height="400" loading="lazy">
+                                        </div>
+                                        </article>
+                                </a>
+                                <a href="#">
+                                    <article class="recent-news-item">
+                                        <div id="letra">
+                                            <h3>A pesar de la demanda de Nintendo, Palworld lanzará versiones para iOS y Android, desarrolladas por los creadores de PUBG</h3>
+                                            <p>"Demandas y armas, muy americano de su parte."</p>
+                                            <p>Móviles - Rafael - Hace 7 horas</p>
+                                        </div>
+                                        <div id="noticia">
+                                            <img src="./img/palworld.webp" alt="Noticia 2" width="600" height="400" loading="lazy">
+                                        </div>
+                                    </article>
+                                </a>
+                                <a href="#">
+                                    <article class="recent-news-item">
+                                        <div id="letra">
+                                            <h3>Un jugador se da cuenta tras cuatro años de frustración que su monitor estaba conectado a la GPU integrada en lugar de a su tarjeta gráfica</h3>
+                                            <p>"Por eso el Paint tenía LAG."</p>
+                                            <p>PC - Pamela - Hace 1 día</p>
+                                        </div>
+                                        <div id="noticia">
+                                            <img src="./img/lag.webp" alt="Noticia 3" width="600" height="400" loading="lazy">
+                                        </div>
+                                    </article>
+                                </a>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            <div class="space"></div>
+        </section>
+
+        <section class="subscription">
+            <h3>Recibe nuestras últimas noticias:</h3>
+            <form action="#">
+                <input type="email" placeholder="Escribe tu correo electrónico">
+                <button type="button">Suscribirse</button>
+            </form>
+            <p>Suscribiéndote aceptas nuestras
+                <a href="#" class="link-privacidad">políticas de privacidad</a>
+            </p>
+        </section>
+    </div>
+
+    <footer>
+        <div class="footer-info">
+            <div>
+                <ul>
+                    <li><a class="upper" href="#">Nosotros</a></li>
+                    <li><a href="#">Sobre nosotros</a></li>
+                    <li><a href="#">Autores</a></li>
+                    <li><a href="#">Contacto</a></li>
+                </ul>
+            </div>
+            <div>
+                <ul>
+                    <li><a class="upper" href="#">Nuestra política</a></li>
+                    <li><a href="#">Términos y condiciones</a></li>
+                    <li><a href="#">Política de cookies</a></li>
+                    <li><a href="#">Política de privacidad</a></li>
+                </ul>
+            </div>
+
+        </div>
+        <div class="footer-info1">
+            <div class="indice">
+                <ul>
+                    <li><a class="upper"href="#">Índice</a></li>
+                    <li><a href="#analisis">Análisis</a></li>
+                    <li><a href="#">Tecnología</a></li>
+                    <li><a href="#articulos">Artículos</a></li>
+                    <li><a href="#guias">Guías</a></li>
+                    <li><a href="#">PC</a></li>
+                    <li><a href="#">PlayStation</a></li>
+                    <li><a href="#">Xbox</a></li>
+                    <li><a href="#">Nintendo</a></li>
+    
+                </ul>
+    
+    
+            </div>
+            <div class="social-media">
+                <div>
+                    <h2>Síguenos:</h2>
+                </div>
+                <div class="redes">
+                    <ul>
+                        <li><a href="https://www.facebook.com" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a></li>
+                        <li><a href="https://web.whatsapp.com" target="_blank" aria-label="Whatsapp"><i class="fa-brands fa-whatsapp"></i></a></li>
+                        <li><a href="https://www.instagram.com" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a></li>
+                        <li><a href="https://www.youtube.com" target="_blank" aria-label="Youtube"><i class="fa-brands fa-youtube"></i></a></li>
+                        <li><a href="https://x.com/?lang=es" target="_blank" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

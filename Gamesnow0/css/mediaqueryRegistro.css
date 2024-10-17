@@ -1,0 +1,285 @@
+
+/* Tablet */
+@media (max-width: 768px){
+    html {
+        min-height: 100vh;
+        scroll-behavior: smooth;
+        width: 100vw;
+    }
+    body {
+        overflow-x: hidden;
+        width: 100vw;
+        overflow-y: hidden;
+    }
+    .barra{
+        display: none;
+    }
+    .background-image {
+        display: none;
+    }
+    .games{
+        display: none;
+    }
+    .container {
+        position: relative;
+        z-index: 1;
+        width: 100vh;
+        background-color: transparent;
+        overflow: hidden;
+        border-radius: 10px;
+        padding: 10vh;
+        height: 100%;
+    }
+    .container .form-container {
+        width: 100%;
+        padding: 12vh 0 0 0;
+    }
+    .register {
+        display: flex;
+        justify-content: center;
+        position: relative; 
+        width: 100%;
+        height: 4vh;
+        padding-bottom: 0.5vh;
+        margin-bottom: 1vh;
+    
+    }
+    .usuario{
+        padding-left: 2vh;
+        width: 100%;
+        height: 100%;
+        border: none;
+        border-radius: 25px;
+        color: gray;
+        outline: none;
+        background-color: white;
+        border: 0px ;
+    }
+    h2 {
+        font-size: 2rem;
+        color: black;
+        margin-bottom: 1vh;
+    }
+    
+    p {
+        color: black;
+        margin: 1vh 0;
+        font-size: 1.5rem;
+    }
+    form{
+        width: 100%;
+    }
+    form label {
+        display: block;
+        margin: 0.5em 0 0.2em;
+        font-weight: bold;
+        color: black;
+        font-size: 1.5rem;
+    }
+    input[type="text"], input[type="password"], input[type="email"] {
+        width: 100%;
+        padding: 0.7em;
+        margin-bottom: 0.8em;
+        border: 0px;
+        border-radius: 4px;
+        box-sizing: border-box;
+        font-size: 1rem;
+    }
+    
+    .small-text {
+        font-size: 1.2rem;
+        color: black;
+        margin: -0.5em 0 1em;
+    }
+    .checkbox-container {
+        display: flex;
+        align-items: center;
+        font-size: 1.2rem;
+        font-weight: 100;
+    }
+    div .logo{
+        opacity: 0.4;
+    }
+    h1{
+        opacity: 0.4;
+    }
+    .checkbox-container input[type="checkbox"] {
+        margin-right: 0.5em;
+        width: 2vh;
+        height: 2vh;
+    }
+    button{
+        font-size: 1.5rem;
+    }
+    .social-login p{
+        font-size: 1.5rem;
+    }
+    .footer-text{
+        font-size: 1.5rem;
+    }
+    .footer-text a {
+        font-size: 1.5rem;
+    }
+    .brand-icon{
+        font-size: 7vh;
+    }
+    .brand-icon1{
+        font-size: 7vh;
+    }
+    .brand-icon2{
+        font-size: 7vh;
+    }
+    .brand-icon3{
+        font-size: 7vh;
+        
+    }
+    .social-login .brands{
+        width: 100%;
+    }
+}
+/* Celular */
+@media (max-width: 480px){
+    html {
+        min-height: 100vh;
+        scroll-behavior: smooth;
+        width: 100vw;
+    }
+    body {
+        overflow-x: hidden;
+        width: 100vw;
+        overflow-y: hidden;
+    }
+    .barra{
+        display: none;
+    }
+    .background-image {
+        display: none;
+    }
+    .games{
+        display: none;
+
+    }
+    .container {
+        position: relative;
+        z-index: 1;
+        width: 70vh;
+        background-color: transparent;
+        overflow: hidden;
+        border-radius: 10px;
+        padding: 8vh;
+        height: 100%;
+    }
+    .container .form-container {
+        width: 100%;
+        padding: 10vh 0 0 0;
+    }
+    .register {
+        display: flex;
+        justify-content: center;
+        position: relative; 
+        width: 100%;
+        height: 4vh;
+        padding-bottom: 0.5vh;
+        margin-bottom: 1vh;
+
+    }
+    .usuario{
+        padding-left: 2vh;
+        width: 100%;
+        height: 100%;
+        border: none;
+        border-radius: 25px;
+        color: gray;
+        outline: none;
+        background-color: white;
+        border: 0px ;
+    }
+    h2 {
+        font-size: 1.5rem;
+        color: black;
+        margin-bottom: 1vh;
+    }
+
+    p {
+        color: black;
+        margin: 1vh 0;
+        font-size: 1rem;
+    }
+    form{
+        width: 100%;
+    }
+    form label {
+        display: block;
+        margin: 0.5em 0 0.2em;
+        font-weight: bold;
+        color: black;
+        font-size: 1.2rem;
+    }
+    input[type="text"], input[type="password"], input[type="email"] {
+        width: 100%;
+        padding: 0.7em;
+        margin-bottom: 0.8em;
+        border: 0px;
+        border-radius: 4px;
+        box-sizing: border-box;
+        font-size: 1rem;
+    }
+
+    .small-text {
+        font-size: 0.8rem;
+        color: black;
+        margin: -0.5em 0 1em;
+    }
+    .checkbox-container {
+        display: flex;
+        align-items: center;
+        font-size: 0.8rem;
+        font-weight: 100;
+    }
+    div .logo{
+        opacity: 0.4;
+    }
+    div .logo img{
+        width: 10vh;
+        height: 10vh;
+    }
+    .games #gn{
+        font-size: 1.2rem;
+    }
+    h1{
+        opacity: 0.4;
+    }
+    .checkbox-container input[type="checkbox"] {
+        margin-right: 0.5em;
+        width: 2vh;
+        height: 2vh;
+    }
+    button{
+        font-size: 1rem;
+    }
+    .social-login p{
+        font-size: 1rem;
+    }
+    .footer-text{
+        font-size: 1rem;
+    }
+    .footer-text a {
+        font-size: 1rem;
+    }
+    .brand-icon{
+        font-size: 5vh;
+    }
+    .brand-icon1{
+        font-size: 5vh;
+    }
+    .brand-icon2{
+        font-size: 5vh;
+    }
+    .brand-icon3{
+        font-size: 5vh;
+        
+    }
+    .social-login .brands{
+        width: 100%;
+    }
+}

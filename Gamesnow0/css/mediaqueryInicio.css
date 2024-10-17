@@ -1,0 +1,230 @@
+
+/* Tablet */
+@media (max-width: 768px){
+    html {
+        min-height: 100vh;
+        scroll-behavior: smooth;
+        width: 100%;
+    }
+    body {
+        overflow-x: hidden;
+        width: 100%;
+        overflow-y: hidden;
+        display: block;
+    }
+    .barra{
+        display: none;
+    }
+    .background-image {
+        display: none;
+    }
+    .register {
+        display: flex;
+        justify-content: center;
+        position: relative; 
+        width: 96%;
+        height: 7vh;
+        padding-bottom: 0.5vh;
+        margin-bottom: 1vh;
+    
+    }
+    .usuario{
+        padding-left: 2vh;
+        width: 70%;
+        height: 100%;
+        border: none;
+        border-radius: 25px;
+        color: gray;
+        outline: none;
+        
+    }
+    .user-icon{
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%); 
+        color: #1e9090; 
+        font-size: 2rem; 
+    }
+    .container .login .o .barra1{
+        display: none;
+    }
+    .container .login .o .barra2{
+        display: none;
+    }
+    .container{
+        padding: 6.5vh;
+    }
+    .container .login {
+        position: relative;
+        z-index: 1;
+        background-color: transparent;
+        width: 100%;  
+        border-radius: 8px;
+        text-align: center;
+    }
+    
+    .container .login div .social{
+        display: flex;
+        flex-direction: column;
+        gap: 2vh;
+    }
+    .container .login .o{
+        display: flex;
+        justify-content: space-between;
+    }
+    .container .login div input{
+        width: 100%;
+        font-size: 1.5rem;
+    }
+    .button{
+        font-size: 1.5rem;
+    }
+    .google { 
+        font-size: 1.5rem;
+    }
+
+    .facebook { 
+        font-size: 1.5rem;
+    }
+
+    .reddit { 
+        font-size: 1.5rem;
+    }
+
+    .twitter { 
+        font-size: 1.5rem;
+    }
+    h2{
+        font-weight: bold;
+    }
+    .links a {
+        font-size: 1.5rem;
+    }
+    p{
+        font-size: 1.5rem;
+    }
+    .o{
+        display: flex;
+        justify-content: space-between;
+        justify-content: center;
+        gap: 0;
+    }
+    
+}
+/* Celular */
+@media (max-width: 480px){
+    html {
+        min-height: 100vh;
+        scroll-behavior: smooth;
+        width: 100%;
+    }
+    body {
+        overflow-x: hidden;
+        width: 100%;
+        overflow-y: hidden;
+    }
+    .barra{
+        display: none;
+    }
+    .background-image {
+        display: none;
+    }
+    .register {
+        display: flex;
+        justify-content: center;
+        position: relative; 
+        width: 96%;
+        height: 7vh;
+        padding-bottom: 0.5vh;
+        margin-bottom: 1vh;
+    
+    }
+    .usuario{
+        padding-left: 2vh;
+        width: 70%;
+        height: 100%;
+        border: none;
+        border-radius: 25px;
+        color: gray;
+        outline: none;
+        
+    }
+    .user-icon{
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%); 
+        color: #1e9090; 
+        font-size: 1.5rem; 
+    }
+    .container .login .o .barra1{
+        display: none;
+    }
+    .container .login .o .barra2{
+        display: none;
+    }
+    .container{
+        padding: 5vh;
+    }
+    .container .login {
+        position: relative;
+        z-index: 1;
+        background-color: transparent;
+        width: 100%;  
+        border-radius: 8px;
+        text-align: center;
+    }
+    
+    .container .login div .social{
+        display: flex;
+        flex-direction: column;
+        gap: 2vh;
+    }
+    .container .login .o{
+        display: flex;
+        justify-content: space-between;
+        padding-top: 2vh;
+    }
+    .container .login div input{
+        width: 100%;
+        font-size: 1.3rem;
+    }
+    .button{
+        font-size: 1.3rem;
+    }
+    .google { 
+        font-size: 1.1rem;
+    }
+
+    .facebook { 
+        font-size: 1.1rem;
+    }
+
+    .reddit { 
+        font-size: 1.1rem;
+    }
+
+    .twitter { 
+        font-size: 1.1rem;
+    }
+    h2{
+        font-weight: bold;
+    }
+    .links a {
+        font-size: 1.2rem;
+    }
+    p{
+        font-size: 1.2rem;
+    }
+     #text{
+        width: 100%;
+        font-size: 1em;
+    }
+    .o{
+        display: flex;
+        justify-content: space-between;
+        justify-content: center;
+        gap: 0;
+    }
+}
