@@ -1,7 +1,7 @@
 --CONSULTAS DE RESUMEN
 --Gropu by - having
 
---Obtener la suma total que se pagará por hora entre todos los empleados:
+--Obtener la suma total que se pagarï¿½ por hora entre todos los empleados:
 select sum(sueldo_hora) [Sueldo por Hora de Empleados] from puesto
 
 --Obtener la suma total del sueldo semanal que se pagara al personal administrativo:
@@ -17,10 +17,10 @@ select AVG(edad) from Alumno_general where sexo='F'
 select round(avg(edad),2) [Promedio Edad] from Alumno_general
 
 --Obtener el sueldo por hora mas bajo de los empleados:
-select min(sueldo_hora)[Sueldo Mínimo] from Puesto
+select min(sueldo_hora)[Sueldo Mï¿½nimo] from Puestoooo
 
---Obtener el sueldo más alto de los administrativos:
-select max(sueldo_hora)[Sueldo Máximo Administrativos] from puesto where puesto ='Administrativo'
+--Obtener el sueldo mï¿½s alto de los administrativos:
+select max(sueldo_hora)[Sueldo Mï¿½ximo Administrativos] from puesto where puesto ='Administrativo'
 
 --Obtener el total de empleados que tienen preparatoria:
 select count (escolaridad) [Empleados con Preparatoria] from Escolaridad where ESTUDIOS='Preparatoria'
