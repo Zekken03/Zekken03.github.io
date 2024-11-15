@@ -1,0 +1,29 @@
+aside div{
+    background-color: #1e9090;
+}
+aside{
+    height: 100vh;
+    overflow-y: auto;
+    width: 15%;
+    min-width: 200px; /* Ajusta según lo necesario */
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+body {
+    overflow-x: hidden; 
+}
+
+.card-footer{
+    background-color: #f0f6f6;
+}
+.card-header{
+    background-color: #f0f6f6;
+}
+.card-footer .btn{
+    background-color: #1e9090;
+    border-color:#1C7970;
+}
