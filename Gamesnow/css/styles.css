@@ -172,6 +172,12 @@ nav.navbar > div.contentGames > div#login {
     height: 15px;
     font-weight: 600;
 }
+#gn{
+    font-family: "Orbitron", sans-serif;
+    font-size: 2.2rem;
+    height: 15px;
+    font-weight: 600;
+}
 .contentGames {
     display: flex;
     justify-content: space-between;

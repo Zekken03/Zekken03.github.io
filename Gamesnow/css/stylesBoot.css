@@ -18,12 +18,43 @@ body {
 }
 
 .card-footer{
-    background-color: #f0f6f6;
+    background-color: #d9fffc;
 }
 .card-header{
-    background-color: #f0f6f6;
+    background-color: #d9fffc;
 }
 .card-footer .btn{
     background-color: #1e9090;
     border-color:#1C7970;
 }
+.card{
+    background-color: #edfaf9;
+}
+table.custom-table {
+    width: 100%; /* Ancho completo */
+    border-collapse: collapse; /* Bordes colapsados */
+    background-color: #f4f4f9; /* Fondo de la tabla */
+  }
+
+  /* Estilo para las celdas del encabezado */
+  table.custom-table th {
+    background-color: #1e9090; /* Fondo del encabezado */
+    color: #fff; /* Texto blanco */
+    padding: 10px;
+  }
+
+  /* Estilo para las celdas del cuerpo */
+  table.custom-table td {
+    padding: 10px;
+    border: 1px solid #1e9090; /* Bordes */
+  }
+
+  /* Color alterno en filas pares */
+  table.custom-table tbody tr:nth-child(even) {
+    background-color: #e9ecef; /* Fondo para filas pares */
+  }
+
+  /* Hover: Cambiar fondo al pasar el ratón */
+  table.custom-table tbody tr:hover {
+    background-color: #d1ecf1; /* Fondo al pasar el mouse */
+  }

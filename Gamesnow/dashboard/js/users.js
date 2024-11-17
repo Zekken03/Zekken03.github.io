@@ -37,9 +37,3 @@ document.getElementById("changePassword").addEventListener("change", function() 
   }
 });
 
-// Lógica para pre-poblar los datos del formulario (esto es opcional)
-function populateUserData(user) {
-  document.getElementById('nickname').value = user.nickname;
-  document.getElementById('email').value = user.email;
-  document.getElementById('edad').value = user.edad;
-}
