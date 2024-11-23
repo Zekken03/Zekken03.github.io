@@ -10,6 +10,8 @@ document.getElementById("btnGuardar").onclick=(event)=>{
       });
 }
 
+
+
 // document.getElementById("btnSave").onclick=(event)=>{
 //   event.preventDefault()//EVITA RECARGAR LA PÁGINA
 //   document.getElementById("form").classList.add('was-validated')
