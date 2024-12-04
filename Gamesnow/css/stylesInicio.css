@@ -189,7 +189,7 @@ button:hover{
     cursor: pointer;
     text-decoration: none;
     transition: 0.3s;
-    height: 3vh;    
+    height: 40px;    
     padding: 10px;
     color: white;
 }
@@ -202,7 +202,7 @@ button:hover{
     cursor: pointer;
     text-decoration: none;
     transition: 0.3s ease;
-    height: 3vh;    
+    height: 40px;    
     padding: 10px;
     color: #fff;
 }
@@ -215,7 +215,7 @@ button:hover{
     cursor: pointer;
     text-decoration: none;
     transition: 0.3s ease;
-    height: 3vh;    
+    height: 40px;    
     padding: 10px;
     color: #fff;
 }
@@ -228,7 +228,7 @@ button:hover{
     cursor: pointer;
     text-decoration: none;
     transition: 0.3s;
-    height: 3vh;    
+    height: 40px;    
     padding: 10px;
     color: #fff;
     
