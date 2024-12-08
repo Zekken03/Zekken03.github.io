@@ -6,6 +6,7 @@ html {
 body {
     font-family: Arial, sans-serif;
     margin: 0;
+    margin-top: 110px; /* Mismo valor que la altura del header */
     padding: 0;
     background-color: #9BF2EA;
     width: 100%;
@@ -18,6 +19,11 @@ body {
 }
 /* HEADER */
 header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Asegura que esté por encima de otros elementos */
     background-color: #52D3D8;
     padding: 20px;
     display: flex;
@@ -73,6 +79,22 @@ header {
     transition: transform 0.3s ease, font-size 0.3s ease; 
 }
 
+#mainplus #main #analisis .main-news .news-item1 a .centrado1 {
+    padding-top: 5vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;  
+    pointer-events: none; 
+    transition: transform 0.3s ease, font-size 0.2s ease; 
+}
+
 #mainplus #main #analisis .main-news .news-item img{
     width: 600px;
     height: 400px;
@@ -126,6 +148,8 @@ header {
 
 .centrado{
     text-align: center;
+    font-weight:550;
+    margin: 0vh;
 }
 
 
@@ -383,8 +407,8 @@ section#mainplus{
 .recent-news {
     background-color: #9BF2EA;
     padding: 0vh 3vh 3vh 3vh;
-    margin-top: 2vh;
-    height: 50%;
+    padding-top: 2vh;
+
     padding-bottom: 3vh;
 }
 
@@ -601,3 +625,14 @@ footer {
     width: 60vh;
 }
 
+*, *::before, *::after {
+    box-sizing: content-box !important;  /* Forzar content-box */
+}
+input:-webkit-autofill {
+    appearance: none;
+    background-image: none !important;
+    background-color: transparent !important;
+    color: inherit !important;
+    box-shadow: 0 0 0px 1000px white inset !important; /* Cambia 'white' al color de fondo que prefieras */
+    border: 1px solid #ccc; /* Ajusta el borde si es necesario */
+}

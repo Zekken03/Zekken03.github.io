@@ -1,4 +1,4 @@
-<aside class="d-flex col-3 " style="width:15%;height: 200%;">
+<aside class="d-flex col-3 " style="width:15%;height: 300%;">
         <div class="text-white p-3 vh-100% w-100" >
             <h2 class="h5 text-center">GamesNow</h2>
             <nav>
@@ -12,7 +12,7 @@
                     <li class="nav-item">
                         <a href="./users.php" class="nav-link text-white">
                             <i class="bi bi-person"></i>
-                            &nbsp; Usuarios
+                            &nbsp; Moderadores
                         </a>
                     </li>
                     <li class="nav-item">

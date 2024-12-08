@@ -29,16 +29,17 @@
         <div class="login">
             <h2>INICIAR SESIÓN</h2>
             <form action="./admin/php/login.php" method="post">
-                <div class="register">
-                    <input type="text" name="txtUser" placeholder="Nombre de usuario" required class="usuario" >
-                        <i class="fa-regular fa-user user-icon"></i>
-                </div>
-                <div class="register">
-                    <input type="password" name="txtPassword" placeholder="Contraseña" required class="usuario"> 
-                        <i class="fa-solid fa-lock user-icon"></i>
-                </div>
-                <button type="submit">Ingresar</button>
-            </form>
+    <div class="register">
+        <input type="text" name="txtUser" placeholder="Nombre de usuario" required class="usuario">
+        <i class="fa-regular fa-user user-icon"></i>
+    </div>
+    <div class="register" >
+        <input style="background-color:white;" type="password" name="txtPassword" id="password" placeholder="Contraseña" required class="usuario">
+        <i class="fa-solid fa-eye toggle-password user-icon" id="eye-icon" onclick="togglePasswordVisibility()"></i>
+    </div>
+    <button type="submit">Ingresar</button>
+</form>
+
             
             <div class="o">
                 <div class="barra1"></div> O <div class="barra2"></div>
@@ -52,7 +53,7 @@
             <div class="links">
                 <a href="#">¿Olvidaste tu contraseña?</a>
                 <p>¿Aún no tienes una cuenta? <a href="registro.html"> <span>Regístrate gratis</span></a></p>
-                <a href="./index.html">¿Cambiaste de opinión?</a>
+                <a href="./index.php">¿Cambiaste de opinión?</a>
             </div>
         </div>
     </div>
@@ -70,6 +71,22 @@
             const newUrl = window.location.href.split('?')[0];
             history.replaceState(null, '', newUrl);
         });
+    }
+</script>
+<script>
+    function togglePasswordVisibility() {
+        const passwordInput = document.getElementById("password");
+        const eyeIcon = document.getElementById("eye-icon");
+
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            eyeIcon.classList.remove("fa-eye");
+            eyeIcon.classList.add("fa-eye-slash");
+        } else {
+            passwordInput.type = "password";
+            eyeIcon.classList.remove("fa-eye-slash");
+            eyeIcon.classList.add("fa-eye");
+        }
     }
 </script>
 </body>

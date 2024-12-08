@@ -1,9 +1,9 @@
 <?php
     include "../admin/php/conexion.php";
-    $sql = "SELECT u.*,a.idAutor, a.biografia, a.redes
-        FROM Usuarios u
-        JOIN Autores a ON u.idUsuario = a.idUsuario
-        ORDER BY u.idUsuario DESC;";
+    $sql = "SELECT u.*, a.*
+                FROM Autores a
+                JOIN Usuarios u ON a.idUsuario = u.idUsuario
+                ORDER BY u.idUsuario DESC";
     $res = $conexion -> query($sql) or die($conexion->error);
 ?>
 <?php session_start();
@@ -66,18 +66,24 @@
                                 while($fila = mysqli_fetch_array($res)){
                             ?>
                           <tr>
-                            <th scope="row"><?php echo $fila['idAutor'] ?></th>
+                            <th scope="row"><?php echo $fila['idAutor']  ?></th>
                             <td><?php echo $fila['nombre'] ?></td>
                             <td><?php echo $fila['correo'] ?></td>
                             <td><?php echo $fila['biografia'] ?></td>
                             <td><?php echo $fila['redes'] ?></td>                           
                             <td>
                                 &nbsp;
-                                <button class="btn btn-outline-danger btn-sm mx-1" data-bs-toggle="modal" data-bs-target="#deleteModal">
-                                    <i class="bi bi-trash3-fill"></i>
+                                <button data-id="<?php echo $fila['idAutor'] ?>" class="btnDelete btn btn-outline-danger btn-sm mx-1" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                                    <i data-id="<?php echo $fila['idAutor'] ?>" class="bi bi-trash3-fill"></i>
                                 </button>
                                 &nbsp;                       
-                                <button class="btn btn-outline-warning btn-sm mx-1" data-bs-toggle="modal" data-bs-target="#editModal">
+                                <button 
+                                data-nombre="<?php echo htmlspecialchars($fila['nombre'], ENT_QUOTES, 'UTF-8'); ?>" 
+                                data-correo='<?php echo htmlspecialchars($fila['correo'], ENT_QUOTES, 'UTF-8'); ?>'
+                                data-biografia="<?php echo htmlspecialchars($fila['biografia'], ENT_QUOTES, 'UTF-8'); ?>" 
+                                data-redes="<?php echo htmlspecialchars($fila['redes'], ENT_QUOTES, 'UTF-8'); ?>" 
+                                data-id="<?php echo $fila['idAutor']; ?>"
+                                class="btnEditar btn btn-outline-warning btn-sm mx-1" data-bs-toggle="modal" data-bs-target="#editModal">
                                     <i class="bi bi-pencil-fill"></i>
                                 </button>
                             </td>
@@ -95,107 +101,64 @@
 
     <!-- MODAL -->
     <div class="modal fade modal-lg" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar autor</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <form action="" class="needs-validation" novalidate id="form">
-                    <div class="modal-body">
-                        <div class="row">   
-                            <div class="col-4">
-                                <label for="">Nombre</label>
-                                <input required type="text" class="form-control" placeholder="Inserta el nombre" pattern="[A-Za-zÀ-ÿ\s]+">
-                                <div class="valid-feedback">
-                                    Correcto
-                                </div>
-                                <div class="invalid-feedback">
-                                    No válido
-                                </div>
-                            </div>
-                            <div class="col-4">
-                                <label for="">Apellidos</label>
-                                <input required type="text" class="form-control" placeholder="Inserta los apellidos" pattern="[A-Za-zÀ-ÿ\s]+">
-                                <div class="valid-feedback">
-                                    Correcto
-                                </div>
-                                <div class="invalid-feedback">
-                                    No válido
-                                </div>
-                            </div>
-                            <div class="col-4">
-                                <label for="">Correo electrónico</label>
-                                <input required type="text" class="form-control" placeholder="Inserte el correo electrónico">
-                                <div class="valid-feedback">
-                                    Correcto
-                                </div>
-                                <div class="invalid-feedback">
-                                    No válido
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-6">
-                                <label for="">Biografía</label>
-                                <input required type="text"  class="form-control" placeholder="Inserte la biografía">
-                                <div class="valid-feedback">
-                                    Correcto
-                                </div>
-                                <div class="invalid-feedback">
-                                    No válido
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <label for="">Redes</label>
-                                <input required type="text"  class="form-control" placeholder="Inserta la red social">
-                                <div class="valid-feedback">
-                                    Correcto
-                                </div>
-                                <div class="invalid-feedback">
-                                    No válido
-                                </div>
-                            </div>
-                        </div>
-      
-                            
-                   
-                        <div class="row">
-                            <div class="col-12">
-                                <label for="">Contraseña</label>
-                                <input required type="password" class="form-control" placeholder="Inserta la contraseña">
-                                <div class="valid-feedback">
-                                    Correcto
-                                </div>
-                                <div class="invalid-feedback">
-                                    No válido
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12">
-                                <label for="">Confirmar contraseña</label>
-                                <input required type="password" class="form-control" placeholder="Confirma la contraseña">
-                                <div class="valid-feedback">
-                                    Correcto
-                                </div>
-                                <div class="invalid-feedback">
-                                    No válido
-                                </div>
-                            </div>
-                        </div>
-                        <div class="alert alert-danger mt-4 d-none" id="divAlerta"  role="alert">
-                            Favor de llenar los campos
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="submit" class="btn btn-primary" id="btnGuardar">Guardar</button>
-                    </div>
-                </form>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar autor</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="../admin/php/add-autores.php" enctype="multipart/form-data" method="post" class="needs-validation" novalidate id="form">
+    <div class="modal-body">
+        <div class="row">   
+            <div class="col-4">
+                <label for="txtNombre">Nombre</label>
+                <input required type="text" name="txtNombre" class="form-control" placeholder="Inserta el nombre" pattern="[A-Za-zÀ-ÿ\s]+">
+                <div class="valid-feedback">Correcto</div>
+                <div class="invalid-feedback">No válido</div>
+            </div>
+            <div class="col-4">
+                <label for="txtCorreo">Correo electrónico</label>
+                <input required type="email" name="txtCorreo" class="form-control" placeholder="Inserte el correo electrónico">
+                <div class="valid-feedback">Correcto</div>
+                <div class="invalid-feedback">No válido</div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-6">
+                <label for="txtBiografia">Biografía</label>
+                <input required type="text" name="txtBiografia" class="form-control" placeholder="Inserte la biografía">
+                <div class="valid-feedback">Correcto</div>
+                <div class="invalid-feedback">No válido</div>
+            </div>
+            <div class="col-6">
+                <label for="txtRedes">Redes</label>
+                <input required type="text" name="txtRedes" class="form-control" placeholder="Inserta la red social">
+                <div class="valid-feedback">Correcto</div>
+                <div class="invalid-feedback">No válido</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <label for="txtPassword">Contraseña</label>
+                <input required type="password" name="txtPassword" class="form-control" placeholder="Inserta la contraseña">
+                <div class="valid-feedback">Correcto</div>
+                <div class="invalid-feedback">No válido</div>
+            </div>
+        </div>
+        <div class="alert alert-danger mt-4 d-none" id="divAlerta" role="alert">
+            Favor de llenar los campos
+        </div>
     </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="submit" class="btn btn-primary" id="btnGuardar">Guardar</button>
+    </div>
+</form>
+
+        </div>
+    </div>
+</div>
+
     <!-- MODAL -->
 
      <!-- MODAL edit-->
@@ -206,22 +169,13 @@
                     <h1 class="modal-title fs-5" id="exampleModalLabel">Editar autor</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="" class="needs-validation" novalidate id="form2">
+                <form action="../admin/php/update-autor.php" method="post" class="needs-validation" novalidate id="form2">
                     <div class="modal-body">
+                    <input type="hidden" name="id" id="txtIdEdit"/>
                         <div class="row">
                         <div class="col-4">
                             <label for="">Nombre</label>
-                            <input required type="text" class="form-control" placeholder="Inserta el nombre" pattern="[A-Za-zÀ-ÿ\s]+">
-                            <div class="valid-feedback">
-                                Correcto
-                            </div>
-                            <div class="invalid-feedback">
-                                No válido
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <label for="">Apellidos</label>
-                            <input required type="text" class="form-control" placeholder="Inserta los apellidos" pattern="[A-Za-zÀ-ÿ\s]+">
+                            <input id="txtNombreEdit" name="txtNombre" required type="text" class="form-control" placeholder="Inserta el nombre" pattern="[A-Za-zÀ-ÿ\s]+">
                             <div class="valid-feedback">
                                 Correcto
                             </div>
@@ -231,7 +185,7 @@
                         </div>
                         <div class="col-4">
                             <label for="">Correo electrónico</label>
-                            <input required type="text" class="form-control" placeholder="Inserte el correo electrónico">
+                            <input id="txtCorreoEdit" name="txtCorreo" required type="text" class="form-control" placeholder="Inserte el correo electrónico">
                             <div class="valid-feedback">
                                 Correcto
                             </div>
@@ -241,19 +195,10 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-3">
-                            <label for="">Edad</label>
-                            <input required min="18" type="number"  class="form-control" placeholder="Inserta la edad">
-                            <div class="valid-feedback">
-                                Correcto
-                            </div>
-                            <div class="invalid-feedback">
-                                No válido
-                            </div>
-                        </div>
+                    
                         <div class="col-9">
                             <label for="">Biografía</label>
-                            <input required type="text"  class="form-control" placeholder="Inserte la biografía">
+                            <input id="txtBiografiaEdit" name="txtBiografia" required type="text"  class="form-control" placeholder="Inserte la biografía">
                             <div class="valid-feedback">
                                 Correcto
                             </div>
@@ -265,7 +210,7 @@
                     <div class="row">
                         <div class="col-6">
                             <label for="">Redes</label>
-                            <input required type="text"  class="form-control" placeholder="Inserta la red social">
+                            <input id="txtRedesEdit" name="txtRedes" required type="text"  class="form-control" placeholder="Inserta la red social">
                             <div class="valid-feedback">
                                 Correcto
                             </div>
@@ -274,39 +219,10 @@
                             </div>
                         </div>
                     </div>
-            
-                        <!-- Opción para cambiar la contraseña -->
-                          <!-- Opción para cambiar la contraseña -->
-            <div class="row">
-                <div class="col-12">
-                    <input type="checkbox" id="changePassword" class="form-check-input">
-                    <label for="changePassword" class="form-check-label">Cambiar contraseña</label>
-                </div>
-            </div>
-
-            <!-- Campos de contraseña que se activan si se marca el checkbox -->
-            <div class="row" id="passwordFields" style="display: none;">
-                <div class="col-12">
-                    <label for="password">Contraseña</label>
-                    <input type="password" class="form-control" id="password" placeholder="Inserta la nueva contraseña">
-                    <div class="valid-feedback">Correcto</div>
-                    <div class="invalid-feedback">No válido</div>
-                </div>
-            </div>
-
-            <div class="row" id="confirmPasswordFields" style="display: none;">
-                <div class="col-12">
-                    <label for="confirmPassword">Confirmar contraseña</label>
-                    <input type="password" class="form-control" id="confirmPassword" placeholder="Confirma la nueva contraseña">
-                    <div class="valid-feedback">Correcto</div>
-                    <div class="invalid-feedback">No válido</div>
-                </div>
-            </div>
-
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="submit" class="btn btn-primary">Guardar cambios</button>
+                        <button type="submit" class="btn btn-primary" id="btnGuardar">Guardar cambios</button>
                     </div>
                 </form>
             </div>
@@ -341,7 +257,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cambie de opinión</button>
-                    <button type="submit" class="btn btn-primary"  data-bs-toggle="modal" data-bs-target="">Eliminar</button>
+                    <button type="submit" class="btn btn-primary btnEliminar"  data-bs-toggle="modal" data-bs-target="" id="eliminar">Eliminar</button>
                 </div>
             </div>
         </div>
@@ -349,6 +265,53 @@
     <!-- MODAL confirm delete-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="./js/users.js"></script>
+    <script src="./js/autores.js"></script>
+   
+
+    <?php
+if (isset($_GET['status'])) {
+    $message = "";
+    if ($_GET['status'] == 1) {
+        // insertado correctamente
+        $message = "Autor agregado correctamente";
+    } else if ($_GET['status'] == 2) {
+        // actualizado correctamente
+        $message = "Autor actualizado correctamente";
+    } else if ($_GET['status'] == 3) {
+        // eliminado correctamente
+        $message = "Autor eliminado correctamente";
+    } else if ($_GET['status'] == 0) {
+        ?>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {   
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Favor de completar los datos correctamente",
+                    confirmButtonText: "Aceptar"
+                }).then(function () {
+                    window.location.href = './autores.php'; // Redirigir después de cerrar el modal
+                });
+            });
+        </script>
+        <?php
+        exit; // Asegúrate de que no se ejecuten los scripts siguientes
+    }
+    ?>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            Swal.fire({
+                icon: 'success',
+                title: "<?php echo $message ?>",
+                confirmButtonText: 'Aceptar'
+            }).then(function () {
+                window.location.href = './autores.php'; // Redirigir después de cerrar el modal
+            });
+        });
+    </script>
+    <?php
+}
+?>
+
 </body>
 </html>

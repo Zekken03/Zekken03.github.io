@@ -35,25 +35,32 @@ if (move_uploaded_file($_FILES["txtImg"]['tmp_name'], $destino . $file_name)) {
             die("Error: El autor con id '$autor' no existe en la tabla Autores.");
         }
 
-        // Inserción en Publi
-        $consultaPubli = "INSERT INTO Publi (titulo, contenido, fechaPubli, idAutor, idTipo, idMult) 
-                          VALUES ('$titulo', '$contenido', '$fecha', '$autor', '$tipo', '$idMult')";
+        // Llamar al procedimiento almacenado para insertar en Publi
+        $stmt = $conexion->prepare("CALL InsertarPubli(?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("sssiii", $titulo, $contenido, $fecha, $autor, $tipo, $idMult);
 
-        if ($conexion->query($consultaPubli)) {
+        if ($stmt->execute()) {
             header("Location: ../../dashboard/articulos.php?status=1");
             echo "Registro insertado correctamente";
-
         } else {
-            die("Error al insertar en la tabla Publi: " . $conexion->error);
+            die("Error al insertar en la tabla Publi: " . $stmt->error);
             header("Location: ../../dashboard/articulos.php?status=0");
         }
+
+        $stmt->close();
 
     } else {
         die("Error al insertar el archivo en la tabla multimedia.");
     }
 
-} else {
-    die("Algo falló en la subida del archivo.");
+}  else {
+    // Si ocurre un error en la consulta
+    echo "Error al insertar registro: " . $consulta->error;
+    header("Location: ../../dashboard/articulos.php?status=0");
+    exit(); // Asegura que el script termine después de la redirección
 }
 
+// Cerrar la consulta y la conexión
+$consulta->close();
+$conexion->close();
 ?>
