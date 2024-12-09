@@ -1,9 +1,24 @@
-<?php session_start();
-    if(!isset($_SESSION['user_data'])){
-        header("Location: ../iniciar.php");
-    }
-    $user_data = $_SESSION['user_data'];
+<?php 
+session_start();
+if (!isset($_SESSION['user_data'])) {
+    header("Location: ../iniciar.php");
+    exit;
+}
 
+include "../admin/php/conexion.php";
+
+// Verificar si el usuario es autor
+$idUsuario = $_SESSION['user_data']['id'];
+$sqlAutor = "SELECT * FROM Autores WHERE idUsuario = $idUsuario";
+$resAutor = $conexion->query($sqlAutor);
+
+if (mysqli_num_rows($resAutor) == 0) {
+    // Si no es autor, redirigir al login
+    header("Location: ../iniciar.php");
+    exit;
+}
+
+$user_data = $_SESSION['user_data'];
 ?>
 
 <!DOCTYPE html>

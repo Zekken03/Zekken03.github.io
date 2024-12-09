@@ -71,7 +71,7 @@ for(var i=0; i<botonesEditar.length; i++){
     var contenido=btn.getAttribute("data-contenido")
     $('#txtContenidoEdit').summernote('code', contenido);
 
-    var tipo=btn.getAttribute("data-tipo")
+    var tipo=btn.getAttribute("data-tipo-id")
     document.getElementById("txtTipoEdit").value=tipo
     var autor=btn.getAttribute("data-autor")
     document.getElementById("txtAutorEdit").value=autor
@@ -101,19 +101,6 @@ document.getElementById("eliminar1").onclick=()=>{
 
 
   // Mostrar/ocultar campos de contraseña si se marca el checkbox
-document.getElementById("changePassword").addEventListener("change", function() {
-  const passwordFields = document.getElementById("passwordFields");
-  const confirmPasswordFields = document.getElementById("confirmPasswordFields");
-  console.log("hola")
-  // Verificamos si el checkbox está marcado
-  if (this.checked) {
-      passwordFields.style.display = "block";
-      confirmPasswordFields.style.display = "block";
-  } else {
-      passwordFields.style.display = "none";
-      confirmPasswordFields.style.display = "none";
-  }
-});
 
 
 
@@ -164,3 +151,13 @@ console.log(contenidoConEtiquetas);  // Aquí está el contenido con las etiquet
 
 
 /* location.href="../admin/php/remove-user.php?id="+id*/
+document.addEventListener('DOMContentLoaded', function () {
+  // Obtiene el formulario de comentarios
+  var form = document.querySelector("form[action='../admin/php/agregar-comentario.php']");
+
+  // Asigna el valor del id a un campo oculto antes de enviar el formulario
+  form.addEventListener('submit', function (event) {
+    var comentarioId = document.getElementById("idComentario");  // Campo oculto en el formulario
+    var idPubli = new URLSearchParams(window.location.search).get('id');  // Obtiene el 'id' de la URL
+  });
+});

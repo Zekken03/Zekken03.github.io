@@ -73,13 +73,14 @@
         // Consulta para obtener las publicaciones
         $resPubli = mysqli_query($conexion, "
       SELECT p.idPubli, p.titulo, p.contenido, p.fechaPubli, 
-       p.idAutor,  -- Asegúrate de seleccionar el campo idAutor
+       p.idAutor, p.idTipo, -- Agrega idTipo aquí
        t.tipo, 
        COALESCE(m.url, 'No disponible') AS url
 FROM publi p
 LEFT JOIN tipo t ON p.idTipo = t.idTipo
 LEFT JOIN multimedia m ON p.idMult = m.idMult
 ORDER BY p.idPubli;
+
         ") or die($conexion->error);
 
         // Consulta para obtener los datos de los autores y usuarios
@@ -125,10 +126,12 @@ ORDER BY p.idPubli;
     data-contenido='<?php echo htmlspecialchars($filaPubli['contenido'], ENT_QUOTES, 'UTF-8'); ?>'
 
 
-    data-tipo="<?php echo htmlspecialchars($filaPubli['tipo'], ENT_QUOTES, 'UTF-8'); ?>" 
+   
     data-autor="<?php echo htmlspecialchars($nombreAutor, ENT_QUOTES, 'UTF-8'); ?>" 
     data-etiqueta="<?php echo htmlspecialchars($filaPubli['contenido'], ENT_QUOTES, 'UTF-8'); ?>" 
     data-id="<?php echo $filaPubli['idPubli']; ?>"
+    data-tipo-id="<?php echo $filaPubli['idTipo']; ?>" 
+    data-tipo-nombre="<?php echo htmlspecialchars($filaPubli['tipo'], ENT_QUOTES, 'UTF-8'); ?>" 
     class="btnEditar btn btn-warning btn-sm mx-1" data-bs-toggle="modal" data-bs-target="#editModal">
     <i class="bi bi-pencil-fill"></i>
 </button>
@@ -319,13 +322,19 @@ ORDER BY p.idPubli;
                         <div class="col-3">
     <label for="">Tipo de publicación</label>
     <select id="txtTipoEdit" name="txtTipo" class="form-control" required>
-        <option value="" selected>Seleccione el tipo</option>
+        <option value="" disabled>Seleccione el tipo</option>
         <?php
-        include "./conexion.php";
+        // Consulta para obtener los tipos
         $sqlTipos = "SELECT idTipo, nombre FROM Tipo";
         $resultado = mysqli_query($conexion, $sqlTipos);
+
+        // Obtener el tipo actual de la publicación
+        $tipoActual = $filaPubli['idTipo']; // Asumiendo que idTipo está en la consulta principal
+
         while ($fila = mysqli_fetch_assoc($resultado)) {
-            echo "<option value='" . $fila['idTipo'] . "'>" . $fila['nombre'] . "</option>";
+            // Marcar el tipo actual como seleccionado
+            $selected = ($fila['idTipo'] == $tipoActual) ? "selected" : "";
+            echo "<option value='" . $fila['idTipo'] . "' $selected>" . $fila['nombre'] . "</option>";
         }
         ?>
     </select>
@@ -359,7 +368,6 @@ ORDER BY p.idPubli;
     <select id="txtAutorEdit" name="txtAutor" class="form-control" required>
         <option value="" selected>Seleccione el autor</option>
         <?php
-        include "./conexion.php";
         $sqlAutores = "SELECT u.nombre FROM Usuarios u INNER JOIN Autores a ON u.idUsuario = a.idUsuario";
         $resultado = mysqli_query($conexion, $sqlAutores);
         while ($fila = mysqli_fetch_assoc($resultado)) {
@@ -389,17 +397,12 @@ ORDER BY p.idPubli;
 
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="lib/js/wysihtml5-0.3.0.js"></script>
+
 <script src="lib/js/jquery-1.7.2.min.js"></script>
 <script src="lib/js/prettify.js"></script>
 <script src="lib/js/bootstrap.min.js"></script>
-<script src="src/bootstrap-wysihtml5.js"></script>
 
 
-<script type="text/javascript">
-    $('#some-textarea').wysihtml5({
-});
-</script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

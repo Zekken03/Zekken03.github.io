@@ -44,7 +44,7 @@
             
             <!-- TITTLE SECTION -->
             <div class="d-flex justify-content-between">
-                <h4>Moderadores</h4>
+                <h4>Usuarios</h4>
                 <button class="btn btn-dark m-3" data-bs-toggle="modal" data-bs-target="#exampleModal"> 
                     <i class="bi bi-plus"></i> 
                     Agregar
@@ -102,7 +102,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar moderador</h1>
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar usuario</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form action="../admin/php/add-users.php"  method="post" class="needs-validation" novalidate id="form">
@@ -177,7 +177,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Editar moderador</h1>
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Editar usuario</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form action="../admin/php/update-usuario.php" method="post" class="needs-validation" novalidate id="form2">
@@ -256,13 +256,13 @@ if (isset($_GET['status'])) {
     $message = "";
     if ($_GET['status'] == 1) {
         // insertado correctamente
-        $message = "Moderador agregado correctamente";
+        $message = "Usuario agregado correctamente";
     } else if ($_GET['status'] == 2) {
         // actualizado correctamente
-        $message = "Moderador actualizado correctamente";
+        $message = "Usuario actualizado correctamente";
     } else if ($_GET['status'] == 3) {
         // eliminado correctamente
-        $message = "Moderador eliminado correctamente";
+        $message = "Usuario eliminado correctamente";
     } else if ($_GET['status'] == 0) {
         ?>
         <script>
@@ -273,7 +273,7 @@ if (isset($_GET['status'])) {
                     text: "Favor de completar los datos correctamente",
                     confirmButtonText: "Aceptar"
                 }).then(function () {
-                    window.location.href = './articulos.php'; // Redirigir después de cerrar el modal
+                    window.location.href = './users.php'; // Redirigir después de cerrar el modal
                 });
             });
         </script>

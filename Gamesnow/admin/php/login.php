@@ -1,31 +1,44 @@
-<?php session_start();
-    include "./conexion.php";
-    //CACHAR DATOS
-    $user = mysqli_real_escape_string($conexion, $_POST['txtUser']);
-    $password = mysqli_real_escape_string($conexion, $_POST['txtPassword']);
-    
+<?php 
+session_start();
+include "./conexion.php";
 
-    echo "Bienvenido: $user tu password es: $password";
-    $sql = "SELECT * FROM Usuarios WHERE nombre = '$user' and password = '$password';";
-    $res = $conexion -> query($sql) or die($conexion->error);
-    if(mysqli_num_rows($res) > 0){
-        echo "LOGIN CORRECTO";
-        $fila = mysqli_fetch_row($res);//trae la primera fila
-        $name = $fila[1];
-        $email = $fila[2];
-        $id = $fila[0];
-        //$img = $fila[4];
-        echo "Hola $name tu ID es: $id ";
-        $_SESSION['user_data']=[
-            'id'=>$id, 
-            'nombre'=>$name,
-            'correo'=>$email,
-            //'img'=>$img CONSULTA PROFE
-        ];
+// CACHAR DATOS
+$user = mysqli_real_escape_string($conexion, $_POST['txtUser']);
+$password = mysqli_real_escape_string($conexion, $_POST['txtPassword']);
+
+// Validar usuario y contraseña
+$sql = "SELECT * FROM Usuarios WHERE nombre = '$user' AND password = '$password';";
+$res = $conexion->query($sql) or die($conexion->error);
+
+if (mysqli_num_rows($res) > 0) {
+    $fila = mysqli_fetch_assoc($res);
+    $idUsuario = $fila['idUsuario'];
+    $name = $fila['nombre'];
+    $email = $fila['correo'];
+
+    // Consultar si el usuario es un autor
+    $sqlAutor = "SELECT * FROM Autores WHERE idUsuario = $idUsuario";
+    $resAutor = $conexion->query($sqlAutor);
+
+    // Guardar datos en sesión
+    $_SESSION['user_data'] = [
+        'id' => $idUsuario,
+        'nombre' => $name,
+        'correo' => $email
+    ];
+
+    // Redirigir según si es autor o no
+    if (mysqli_num_rows($resAutor) > 0) {
+        // Usuario es un autor (Administrador)
         header('Location: ../../dashboard/admin.php');
-    }else{
-        echo "DATOS NO VALIDOS";
-        header("Location: ../../iniciar.php?error=1");//redireccionar
-        echo "Consulta SQL: $sql <br>";
+    } else {
+        // Usuario no es autor (Usuario regular)
+        header('Location: ../../index.php');
     }
+    exit;
+} else {
+    // Usuario no válido
+    header("Location: ../../iniciar.php?error=1");
+    exit;
+}
 ?>

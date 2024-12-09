@@ -29,6 +29,7 @@
         <div class="login">
             <h2>INICIAR SESIÓN</h2>
             <form action="./admin/php/login.php" method="post">
+            <input type="hidden" name="redirect" id="redirect-url">
     <div class="register">
         <input type="text" name="txtUser" placeholder="Nombre de usuario" required class="usuario">
         <i class="fa-regular fa-user user-icon"></i>
@@ -89,5 +90,10 @@
         }
     }
 </script>
+<script>
+    // Captura la URL de la página anterior
+    document.getElementById("redirect-url").value = document.referrer;
+</script>
+
 </body>
 </html>

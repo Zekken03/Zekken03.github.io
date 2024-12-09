@@ -12,7 +12,7 @@
                     <li class="nav-item">
                         <a href="./users.php" class="nav-link text-white">
                             <i class="bi bi-person"></i>
-                            &nbsp; Moderadores
+                            &nbsp; Usuarios
                         </a>
                     </li>
                     <li class="nav-item">

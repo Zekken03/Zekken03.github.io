@@ -1,5 +1,10 @@
 <?php
-    include "../admin/php/conexion.php";
+session_start();
+include "../admin/php/conexion.php";
+
+// Verificar si hay un usuario autenticado
+$usuarioAutenticado = isset($_SESSION['user_data']);
+$user_data = $usuarioAutenticado ? $_SESSION['user_data'] : null;
 ?>
 
 <!DOCTYPE html>
@@ -8,6 +13,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GamesNow</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" integrity="sha384-tViUnnbYAV00FLIhhi3v/dWt3Jxw4gZQcNoSCxCIFNJVCx7/D55/wXsrNIRANwdD" crossorigin="anonymous">
+    
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/effects.css">
     <link rel="stylesheet" href="../css/mediaquery.css">
@@ -38,17 +46,25 @@
             <nav class="navbar">
                 <div class="contentGames">
                     <div id="name">
-                    <a href="../index.php">
+                    <a class="pt-3" href="../index.php">
                         <h1 id="gn">GAMESNOW</h1>
 </a>
                     </div>
 
                     <div id="login">
-                        <a href="iniciar.php" class="login-button"> Crear cuenta / Iniciar sesión</a>
-                    </div>
+    <?php if ($usuarioAutenticado): ?>
+        <a href="../admin/php/logout.php" class="login-out" >Cerrar sesión</a>
+    <?php else: ?>
+        <a href="../iniciar.php" class="login-button">Crear cuenta / Iniciar sesión</a>
+    <?php endif; ?>
+</div>
+
+<?php if ($usuarioAutenticado): ?>
+    <span class="user-welcome">¡Hola, <?php echo htmlspecialchars($user_data['nombre']); ?>!</span>
+<?php endif; ?>
                 </div>
                 <div id="barra"></div>
-                <ul>
+                <ul class="pt-3">
                     <li><a href="../dashboard/section-analisis.php">Análisis</a></li>
                     <li><a href="../dashboard/section-guias.php">Guías</a></li>
                     <li><a href="../dashboard/section-noticias.php">Noticias</a></li>
@@ -58,7 +74,7 @@
                     <li><a href="#">Nintendo</a></li>
                     <li>
                         <div class="search-container">
-                            <input type="text" placeholder="Buscar" class="search-bar">
+                            <input style="height:25px" type="text" placeholder="Buscar" class="search-bar">
                                 <i class="fa-solid fa-magnifying-glass search-icon"></i>
                         </div>
                     </li>
@@ -183,5 +199,17 @@
             </div>
         </div>
     </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="lib/js/wysihtml5-0.3.0.js"></script>
+<script src="lib/js/jquery-1.7.2.min.js"></script>
+<script src="lib/js/prettify.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./js/articulos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+    
 </body>
 </html>

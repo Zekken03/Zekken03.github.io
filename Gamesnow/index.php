@@ -1,6 +1,13 @@
 <?php
-    include "./admin/php/conexion.php";
+session_start();
+include "./admin/php/conexion.php";
+
+// Verificar si hay un usuario autenticado
+$usuarioAutenticado = isset($_SESSION['user_data']);
+$user_data = $usuarioAutenticado ? $_SESSION['user_data'] : null;
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="es">
@@ -43,10 +50,19 @@
                         <h1 id="gn">GAMESNOW</h1>
                         </a>
                     </div>
-
                     <div id="login">
-                        <a href="iniciar.php" class="login-button"> Crear cuenta / Iniciar sesión</a>
-                    </div>
+    <?php if ($usuarioAutenticado): ?>
+        <a href="./admin/php/logout.php" class=" login-out">Cerrar sesión</a>
+    <?php else: ?>
+        <a href="iniciar.php" class="login-button">Crear cuenta / Iniciar sesión</a>
+    <?php endif; ?>
+</div>
+
+<?php if ($usuarioAutenticado): ?>
+    <span style="" class="">¡Hola, <?php echo htmlspecialchars($user_data['nombre']); ?>!</span>
+<?php endif; ?>
+
+
                 </div>
                 <div id="barra"></div>
                 <ul class="pt-3">

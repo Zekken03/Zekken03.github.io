@@ -156,7 +156,7 @@ header {
 nav > div#barra {
     background-color: aliceblue;
     height: 1px;
-    width: 100%;
+    width: 95%;
     margin-top: 10px;
 }
 nav.navbar > div.contentGames{
@@ -236,7 +236,7 @@ nav > div.contentGames > div {
     color: #1e9090;
     margin-top: 2vh;
     margin-right: 18.5vh;
-    padding: 1vh 2vh;
+    padding: 1vh 2vh 1.5vh 3vh;
     padding-left: 5vh;
     border-radius: 25px;
     border: 3px solid;
@@ -251,6 +251,74 @@ nav > div.contentGames > div {
 }
 
 .contentGames #login .login-button:hover {
+    background-color: #1e9090;
+    color: white;
+}
+
+#enviar {
+    background-color: white;
+    color: #1e9090;
+    margin-top: 2vh;
+    margin-right: 18.5vh;
+    padding: 1vh 2vh 1.5vh 3vh;
+    margin-left: 75%;
+    border-radius: 25px;
+    border: 3px solid;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: 0.3s;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    width: 30vh;
+    height: 2vh;
+    font-weight: bold;
+    
+}
+
+#enviar:hover {
+    background-color: #1e9090;
+    color: white;
+}
+
+#comentario{
+    margin-left: 1%;
+    width: 90%;
+    height: 150px;
+    padding: 20px 20px;
+    box-sizing: border-box;
+    border: 2px solid #1e9090;
+    border-radius: 4px;
+    background-color: #edfaf9;
+    font-size: 16px;
+    resize: none;
+  }
+
+.contentGames #login .login-out {
+    background-color: white;
+    color: #1e9090;
+    margin-top: 2vh;
+
+    padding: 1vh 1vh 1.5vh 3vh;
+
+    border-radius: 25px;
+    border: 3px solid;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: 0.3s;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    width: 15vh;
+    height: 2vh;
+    font-weight: bold;
+    
+}
+
+span{
+    text-align: center;
+    width: 40vh;
+    margin-top: 40px;
+    margin-right: 20px;
+}
+
+.contentGames #login .login-out:hover {
     background-color: #1e9090;
     color: white;
 }

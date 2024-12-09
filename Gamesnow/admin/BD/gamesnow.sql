@@ -18,7 +18,6 @@ CREATE TABLE Usuarios (
     password VARCHAR(10)
 );
 
-ALTER TABLE Usuarios DROP COLUMN apellidos;
 
 -- Tabla Autores
 CREATE TABLE Autores (
@@ -329,12 +328,7 @@ SELECT * FROM publi p
 SELECT * FROM comentarios c 
 
 delete from publi where idPubli>26;
-ALTER TABLE Usuarios
-DROP COLUMN apellidoPaterno,
-DROP COLUMN apellidoMaterno;
 
-ALTER TABLE Usuarios
-ADD COLUMN apellidos VARCHAR(200);
 
 CALL InsertarAutor('Nombre', 'Biografía', 'Redes', 'correo@example.com', 'contraseña', 1);
 
@@ -346,8 +340,6 @@ delete from usuarios where idUsuario>9
 select * from autores a 
 select * from usuarios u 
 select * from publi p 
-
-update usuarios set apellidos=null where idUsuario =32
 
 
 SELECT publi.*, usuarios.nombre AS autor_nombre, tipo.tipo, autores.biografia, autores.redes, multimedia.*, autores.*
