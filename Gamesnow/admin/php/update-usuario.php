@@ -6,7 +6,7 @@ $nombre = $_POST['txtNombre'];  // Nombre del usuario
 $correo = $_POST['txtCorreo'];  // Correo del usuario
 
 // Verificar si el correo ya existe en otro usuario
-$consultaCheck = "SELECT idUsuario FROM Usuarios WHERE correo = ? AND idUsuario != ?";
+$consultaCheck = "SELECT idUsuario FROM usuarios WHERE correo = ? AND idUsuario != ?";
 $stmt = $conexion->prepare($consultaCheck);
 $stmt->bind_param("si", $correo, $id); // Parametros: correo (string) y id (entero)
 $stmt->execute();
@@ -19,7 +19,7 @@ if ($stmt->num_rows > 0) {
 }
 
 // Si el correo no está duplicado, realizar la actualización
-$consulta = "UPDATE Usuarios SET nombre = ?, correo = ? WHERE idUsuario = ?";
+$consulta = "UPDATE usuarios SET nombre = ?, correo = ? WHERE idUsuario = ?";
 $stmtUpdate = $conexion->prepare($consulta);
 $stmtUpdate->bind_param("ssi", $nombre, $correo, $id); // Parametros: nombre (string), correo (string), id (entero)
 

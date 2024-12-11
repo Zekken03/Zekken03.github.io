@@ -9,7 +9,7 @@ include "../admin/php/conexion.php";
 
 // Verificar si el usuario es autor
 $idUsuario = $_SESSION['user_data']['id'];
-$sqlAutor = "SELECT * FROM Autores WHERE idUsuario = $idUsuario";
+$sqlAutor = "SELECT * FROM autores WHERE idUsuario = $idUsuario";
 $resAutor = $conexion->query($sqlAutor);
 
 if (mysqli_num_rows($resAutor) == 0) {

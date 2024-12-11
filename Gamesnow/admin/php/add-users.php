@@ -13,9 +13,9 @@ if (empty($nombre) || empty($correo) || empty($password)) {
     exit();
 }
 
-// Insertar el archivo en la tabla 'Usuarios' usando un procedimiento almacenado
-$stmt = $conexion->prepare("CALL InsertarUsuario(?, ?, ?)");
-$stmt->bind_param("sss", $nombre, $correo, $password); // Solo 3 parámetros
+// Insertar directamente en la tabla 'Usuarios'
+$stmt = $conexion->prepare("INSERT INTO usuarios (nombre, correo, password) VALUES (?, ?, ?)");
+$stmt->bind_param("sss", $nombre, $correo, $password); // Asignar parámetros
 
 // Ejecutar la consulta y redirigir según el resultado
 if ($stmt->execute()) {

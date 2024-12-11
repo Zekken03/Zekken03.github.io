@@ -26,10 +26,11 @@
         
     </div>
     <div class="container">
+        
         <div class="login">
             <h2>INICIAR SESIÓN</h2>
             <form action="./admin/php/login.php" method="post">
-            <input type="hidden" name="redirect" id="redirect-url">
+            <input type="hidden" name="redirect" value="<?php echo isset($_GET['redirect']) ? $_GET['redirect'] : 'index.php'; ?>">
     <div class="register">
         <input type="text" name="txtUser" placeholder="Nombre de usuario" required class="usuario">
         <i class="fa-regular fa-user user-icon"></i>
@@ -53,7 +54,7 @@
             </div>
             <div class="links">
                 <a href="#">¿Olvidaste tu contraseña?</a>
-                <p>¿Aún no tienes una cuenta? <a href="registro.html"> <span>Regístrate gratis</span></a></p>
+                <p>¿Aún no tienes una cuenta? <a href="registro.php"> <span>Regístrate gratis</span></a></p>
                 <a href="./index.php">¿Cambiaste de opinión?</a>
             </div>
         </div>

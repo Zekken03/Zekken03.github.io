@@ -1,20 +1,20 @@
 <?php
     include "../admin/php/conexion.php";
-    $sql = "select * from Tipo order by idTipo DESC";
+    $sql = "select * from tipo order by idTipo DESC";
     $res = $conexion -> query($sql) or die($conexion->error);
     $sql1 = "SELECT u.*, a.biografia, a.redes
-        FROM Usuarios u
-        JOIN Autores a ON u.idUsuario = a.idUsuario
+        FROM usuarios u
+        JOIN autores a ON u.idUsuario = a.idUsuario
         ORDER BY u.idUsuario DESC;";
     $res1 = $conexion -> query($sql1) or die($conexion->error);
     $sql2 = "SELECT p.idPubli, p.titulo, u.nombre, p.contenido, p.idAutor 
-        FROM Publi p
-        INNER JOIN Usuarios u ON p.idAutor = u.idUsuario
+        FROM publi p
+        INNER JOIN usuarios u ON p.idAutor = u.idUsuario
         ORDER BY p.idPubli DESC";
     $res2 = $conexion -> query($sql2) or die($conexion->error);
-    $sql3 = "select * from Etiquetas order by idEtiqueta DESC";
+    $sql3 = "select * from etiquetas order by idEtiqueta DESC";
     $res3 = $conexion -> query($sql3) or die($conexion->error);
-    $sql4 = "select u.*, a.* from Autores a JOIN  usuarios u on u.idUsuario = a.idUsuario order by a.idAutor desc";
+    $sql4 = "select u.*, a.* from autores a JOIN  usuarios u on u.idUsuario = a.idUsuario order by a.idAutor desc";
     $res4 = $conexion -> query($sql4) or die($conexion->error);
  
 
@@ -73,7 +73,7 @@
         // Consulta para obtener las publicaciones
         $resPubli = mysqli_query($conexion, "
       SELECT p.idPubli, p.titulo, p.contenido, p.fechaPubli, 
-       p.idAutor, p.idTipo, -- Agrega idTipo aquí
+       p.idAutor, p.idTipo, 
        t.tipo, 
        COALESCE(m.url, 'No disponible') AS url
 FROM publi p
@@ -184,7 +184,7 @@ ORDER BY p.idPubli;
                             </div>
                             <div class="col-6">
                                 <label for="">Titular</label>
-                                <input name="txtTitulo" required type="text" class="form-control" placeholder="Inserta el título" pattern="[\w\sÀ-ÿ,.;!?-]+">
+                                <input name="txtTitulo" required type="text" class="form-control" placeholder="Inserta el título">
                                 <div class="valid-feedback">
                                     Correcto
                                 </div>
@@ -325,7 +325,7 @@ ORDER BY p.idPubli;
         <option value="" disabled>Seleccione el tipo</option>
         <?php
         // Consulta para obtener los tipos
-        $sqlTipos = "SELECT idTipo, nombre FROM Tipo";
+        $sqlTipos = "SELECT idTipo, nombre FROM tipo";
         $resultado = mysqli_query($conexion, $sqlTipos);
 
         // Obtener el tipo actual de la publicación
@@ -368,7 +368,7 @@ ORDER BY p.idPubli;
     <select id="txtAutorEdit" name="txtAutor" class="form-control" required>
         <option value="" selected>Seleccione el autor</option>
         <?php
-        $sqlAutores = "SELECT u.nombre FROM Usuarios u INNER JOIN Autores a ON u.idUsuario = a.idUsuario";
+        $sqlAutores = "SELECT u.nombre FROM usuarios u INNER JOIN autores a ON u.idUsuario = a.idUsuario";
         $resultado = mysqli_query($conexion, $sqlAutores);
         while ($fila = mysqli_fetch_assoc($resultado)) {
             echo "<option value='" . $fila['nombre'] . "'>" . $fila['nombre'] . "</option>";

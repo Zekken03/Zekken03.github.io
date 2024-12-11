@@ -11,8 +11,7 @@ $nombreCompleto = $_POST['txtNombre'] ?? ''; // Aseguramos que las variables no 
 $biografia = $_POST['txtBiografia'] ?? '';
 $redes = $_POST['txtRedes'] ?? '';
 $correo = $_POST['txtCorreo'] ?? '';
-$password = $_POST['txtPassword'] ?? '';
- // Recibimos el campo de apellidos
+$password = password_hash($_POST['txtPassword'] ?? '', PASSWORD_BCRYPT); // Encriptamos la contraseña
 
 // Validación inicial de los datos
 if (empty($nombreCompleto) || empty($correo) || empty($password) || empty($biografia) || empty($redes)) {
@@ -21,7 +20,7 @@ if (empty($nombreCompleto) || empty($correo) || empty($password) || empty($biogr
 }
 
 // Verificar si el correo ya está registrado
-$query_check_email = "SELECT idUsuario FROM Usuarios WHERE correo = ? LIMIT 1";
+$query_check_email = "SELECT idUsuario FROM usuarios WHERE correo = ? LIMIT 1";
 $stmt_check_email = $conexion->prepare($query_check_email);
 $stmt_check_email->bind_param("s", $correo);
 $stmt_check_email->execute();
@@ -32,20 +31,22 @@ if ($result_check_email->num_rows > 0) {
     echo "Error: El correo '$correo' ya está registrado.";
 } else {
     // Procedemos con la inserción si el correo no existe
-    // Insertamos en la tabla Usuarios con el campo de apellidos
-    $query_insert_usuario = "INSERT INTO Usuarios (nombre, correo, password) 
+    $query_insert_usuario = "INSERT INTO usuarios (nombre, correo, password) 
                              VALUES (?, ?, ?)";
     
     $stmt_insert_usuario = $conexion->prepare($query_insert_usuario);
     $stmt_insert_usuario->bind_param("sss", $nombreCompleto, $correo, $password);
 
     if ($stmt_insert_usuario->execute()) {
-        // Después de insertar el usuario, insertamos en la tabla Autores
-        $query_insert_autor = "INSERT INTO Autores (biografia, redes, idUsuario) 
-                               VALUES (?, ?, (SELECT idUsuario FROM Usuarios WHERE correo = ? LIMIT 1))";
+        // Capturamos el ID del usuario insertado
+        $idUsuario = $conexion->insert_id;
+
+        // Insertamos en la tabla Autores
+        $query_insert_autor = "INSERT INTO autores (biografia, redes, idUsuario) 
+                               VALUES (?, ?, ?)";
         
         $stmt_insert_autor = $conexion->prepare($query_insert_autor);
-        $stmt_insert_autor->bind_param("sss", $biografia, $redes, $correo);
+        $stmt_insert_autor->bind_param("ssi", $biografia, $redes, $idUsuario);
         
         if ($stmt_insert_autor->execute()) {
             header("Location: ../../dashboard/autores.php?status=1"); // Redirigir con éxito
@@ -54,7 +55,7 @@ if ($result_check_email->num_rows > 0) {
             echo "Error al agregar el autor: " . $stmt_insert_autor->error;
         }
     } else {
-        die("Error al insertar en la tabla Usuarios: " . $stmt->error); // Redirigir con error
+        die("Error al insertar en la tabla usuarios: " . $stmt_insert_usuario->error); // Redirigir con error
         header("Location: ../../dashboard/autores.php?status=0");
     }
 

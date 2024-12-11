@@ -1,10 +1,10 @@
 <?php
     include "../admin/php/conexion.php";
-    $sql = "SELECT * FROM Usuarios 
-                   WHERE idUsuario NOT IN (SELECT idUsuario FROM Autores)
+    $sql = "SELECT * FROM usuarios 
+                   WHERE idUsuario NOT IN (SELECT idUsuario FROM autores)
                    ORDER BY idUsuario DESC";
     $res = $conexion -> query($sql) or die($conexion->error);
-    $sql4 = "select * from Multimedia order by idMult DESC";
+    $sql4 = "select * from multimedia order by idMult DESC";
     $res4 = $conexion -> query($sql) or die($conexion->error);
 
 ?>
@@ -21,6 +21,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" integrity="sha384-tViUnnbYAV00FLIhhi3v/dWt3Jxw4gZQcNoSCxCIFNJVCx7/D55/wXsrNIRANwdD" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.0/dist/sweetalert2.min.css">
@@ -133,27 +138,20 @@
                         <div class="row">
                             <div class="col-12">
                                 <label for="">Contraseña</label>
-                                <input name="txtPassword" required type="password" class="form-control" placeholder="Inserta la contraseña">
-                                <div class="valid-feedback">
-                                    Correcto
-                                </div>
-                                <div class="invalid-feedback">
-                                    No válido
-                                </div>
+                                <small id="passwordHelp" class="form-text text-muted">
+            Favor de usar mayúsculas, minúsculas y números.
+        </small>
+                                <input name="txtPassword" required type="password" class="form-control" id="password" placeholder="Inserta la contraseña" maxlength="10">
+                                <i class="fa-solid fa-eye toggle-password user-icon" id="eye-icon" onclick="togglePasswordVisibility()"></i>
+                                <small id="passwordHelp" class="form-text text-muted">
+            Mínimo de 8 caracteres y máximo 10 caracteres.
+        </small>
+                                <div id="password-strength" class="valid-feedback" style="display: none; color: green;">Contraseña segura</div>
+        <div id="password-warning" class="invalid-feedback" style="display: none; color: red;">Contraseña insegura</div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-12">
-                                <label for="">Confirmar contraseña</label>
-                                <input name="txtConfirmPassword" required type="password" class="form-control" placeholder="Confirma la contraseña">
-                                <div class="valid-feedback">
-                                    Correcto
-                                </div>
-                                <div class="invalid-feedback">
-                                    No válido
-                                </div>
-                            </div>
-                        </div>
+                        <br>
+     
                         <div class="alert alert-danger mt-4 d-none" id="divAlerta"  role="alert">
                             Favor de llenar los campos
                         </div>
@@ -219,7 +217,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">¿Desea eliminar este moderador?</h1>
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">¿Desea eliminar este usuario?</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-footer">
@@ -236,7 +234,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">¿Esta seguro que desea eliminar este moderador?</h1>
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">¿Esta seguro que desea eliminar este usuario?</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-footer">
@@ -296,5 +294,60 @@ if (isset($_GET['status'])) {
 }
 ?>
 
+<script>
+    document.getElementById("password").addEventListener("input", function () {
+        const passwordField = this;
+        const maxLength = 10;
+        const currentLength = passwordField.value.length;
+
+        // Mostrar alerta si se excede el límite
+        if (currentLength > maxLength) {
+            alert("La contraseña no puede tener más de " + maxLength + " caracteres.");
+            passwordField.value = passwordField.value.slice(0, maxLength); // Recorta el texto excedente
+        }
+
+        // Verificación de seguridad de la contraseña
+        const password = passwordField.value;
+        const strengthIndicator = document.getElementById("password-strength");
+        const warningIndicator = document.getElementById("password-warning");
+
+        // Verifica si la contraseña tiene al menos 8 caracteres y contiene letras mayúsculas, minúsculas y números
+        const hasUpperCase = /[A-Z]/.test(password);
+        const hasLowerCase = /[a-z]/.test(password);
+        const hasNumbers = /\d/.test(password);
+        const isValidLength = password.length >= 8;
+
+        // Determinar si la contraseña es segura
+        if (isValidLength && hasUpperCase && hasLowerCase && hasNumbers) {
+            strengthIndicator.style.display = 'block'; // Mostrar mensaje de seguridad
+            warningIndicator.style.display = 'none'; // Ocultar mensaje de inseguridad
+            strengthIndicator.textContent = 'Contraseña segura';
+            strengthIndicator.classList.remove("invalid-feedback");
+            strengthIndicator.classList.add("valid-feedback");
+        } else {
+            strengthIndicator.style.display = 'none'; // Ocultar mensaje de seguridad
+            warningIndicator.style.display = 'block'; // Mostrar mensaje de inseguridad
+            warningIndicator.textContent = 'Contraseña insegura';
+            warningIndicator.classList.remove("valid-feedback");
+            warningIndicator.classList.add("invalid-feedback");
+        }
+    });
+</script>
+<script>
+    function togglePasswordVisibility() {
+        const passwordInput = document.getElementById("password");
+        const eyeIcon = document.getElementById("eye-icon");
+
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            eyeIcon.classList.remove("fa-eye");
+            eyeIcon.classList.add("fa-eye-slash");
+        } else {
+            passwordInput.type = "password";
+            eyeIcon.classList.remove("fa-eye-slash");
+            eyeIcon.classList.add("fa-eye");
+        }
+    }
+</script>
 </body>
 </html>

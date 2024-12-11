@@ -5,13 +5,13 @@ if (isset($_GET['id'])) {
     $id = intval($_GET['id']); // Validar el ID como un número entero
 
     // Actualizar las publicaciones para que no tengan un autor asignado
-    $consulta_publi = "UPDATE Publi SET idAutor = NULL WHERE idAutor = $id";
+    $consulta_publi = "UPDATE publi SET idAutor = NULL WHERE idAutor = $id";
     if (!$conexion->query($consulta_publi)) {
         die("Error al actualizar las publicaciones: " . $conexion->error);
     }
 
     // Obtener el idUsuario relacionado con el idAutor
-    $consulta_usuario_relacionado = "SELECT idUsuario FROM Autores WHERE idAutor = $id";
+    $consulta_usuario_relacionado = "SELECT idUsuario FROM autores WHERE idAutor = $id";
     $resultado = $conexion->query($consulta_usuario_relacionado);
 
     if ($resultado->num_rows > 0) {
@@ -19,10 +19,10 @@ if (isset($_GET['id'])) {
         $idUsuario = $fila['idUsuario']; // Obtener el idUsuario relacionado
 
         // Eliminar el autor
-        $consulta_autor = "DELETE FROM Autores WHERE idAutor = $id";
+        $consulta_autor = "DELETE FROM autores WHERE idAutor = $id";
         if ($conexion->query($consulta_autor)) {
             // Eliminar el usuario relacionado
-            $consulta_usuario = "DELETE FROM Usuarios WHERE idUsuario = $idUsuario";
+            $consulta_usuario = "DELETE FROM usuarios WHERE idUsuario = $idUsuario";
             if ($conexion->query($consulta_usuario)) {
                 // Redirigir al usuario a autores.php si la eliminación fue exitosa
                 header("Location: ../../dashboard/autores.php?status=3");

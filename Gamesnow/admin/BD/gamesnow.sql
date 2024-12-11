@@ -54,7 +54,7 @@ CREATE TABLE Tipo (
     tipo VARCHAR(15) CHECK (tipo IN ('Noticia', 'Guía', 'Análisis'))
 );
 
-select * from tipo t 
+select * from comentarios c 
 -- Tabla Etiquetas
 CREATE TABLE Etiquetas (
     idEtiqueta INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -530,3 +530,12 @@ INSERT INTO Comentarios (idPubli, idUsuario, comentario, fecha) VALUES
 (12, 27, '¡Me encanta Dead Rising! Este remaster tiene gráficos impresionantes, aunque me gustaría ver más novedades.', NOW()),
 (12, 33, '¡Muy bueno! El remaster de Dead Rising ha mejorado mucho, pero las mecánicas siguen siendo tan divertidas como antes.', NOW()),
 (12, 31, 'El sistema de zombis nunca envejece. ¡Este remaster me trae muchos recuerdos!', NOW());
+
+SELECT Publi.idPubli, Publi.titulo, Publi.contenido, Usuarios.nombre, Multimedia.idMult, Multimedia.estado, Multimedia.url, Multimedia.descripcion
+        FROM Publi
+        INNER JOIN Usuarios ON Publi.idAutor = Usuarios.idUsuario
+        INNER JOIN Multimedia ON Publi.idMult = Multimedia.idMult
+        WHERE Publi.idPubli = 12
+
+ALTER TABLE usuarios
+MODIFY COLUMN password VARCHAR(100);

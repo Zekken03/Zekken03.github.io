@@ -10,22 +10,22 @@ if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
 $id = intval($_GET['id']);
 
     // Consulta para obtener título, contenido y nombre del elemento seleccionado
-    $sql = "SELECT Publi.titulo, Publi.contenido, Usuarios.nombre, Multimedia.idMult, Multimedia.estado, Multimedia.url, Multimedia.descripcion
-            FROM Publi
-            INNER JOIN Usuarios ON Publi.idAutor = Usuarios.idUsuario
-            INNER JOIN Multimedia ON Publi.idMult = Multimedia.idMult
-            WHERE Publi.idPubli = ?";
+    $sql = "SELECT publi.titulo, publi.contenido, usuarios.nombre, multimedia.idMult, multimedia.estado, multimedia.url, multimedia.descripcion
+            FROM publi
+            INNER JOIN usuarios ON publi.idAutor = usuarios.idUsuario
+            INNER JOIN multimedia ON publi.idMult = multimedia.idMult
+            WHERE publi.idPubli = ?";
     $stmt = $conexion->prepare($sql);
     $stmt->bind_param("i", $id);
     $stmt->execute();
     $res = $stmt->get_result();
 
     // Consulta para los comentarios
-    $sqlComentarios = "SELECT Usuarios.nombre, Comentarios.comentario, Comentarios.fecha
-    FROM Comentarios
-    INNER JOIN Usuarios ON Comentarios.idUsuario = Usuarios.idUsuario
-    WHERE Comentarios.idPubli = ?
-    ORDER BY Comentarios.fecha DESC"; // Ordenar por fecha
+    $sqlComentarios = "SELECT usuarios.nombre, comentarios.comentario, comentarios.fecha
+    FROM comentarios
+    INNER JOIN usuarios ON comentarios.idUsuario = usuarios.idUsuario
+    WHERE comentarios.idPubli = ?
+    ORDER BY comentarios.fecha DESC"; // Ordenar por fecha
     $stmtComentarios = $conexion->prepare($sqlComentarios);
     $stmtComentarios->bind_param("i", $id);
     $stmtComentarios->execute();
@@ -98,9 +98,11 @@ $id = intval($_GET['id']);
     <?php if ($usuarioAutenticado): ?>
         <a href="../admin/php/logout.php?redirect=<?php echo urlencode($_SERVER['REQUEST_URI']); ?>" class="login-out">Cerrar sesión</a>
     <?php else: ?>
-        <a href="../iniciar.php" class="login-button">Crear cuenta / Iniciar sesión</a>
+        <!-- Enlace de inicio de sesión con la URL actual pasada como parámetro -->
+        <a href="../iniciar.php?redirect=<?php echo urlencode($_SERVER['REQUEST_URI']); ?>" class="login-button">Crear cuenta / Iniciar sesión</a>
     <?php endif; ?>
 </div>
+
 
 <?php if ($usuarioAutenticado): ?>
     <span class="">¡Hola, <?php echo htmlspecialchars($user_data['nombre']); ?>!</span>
@@ -117,10 +119,29 @@ $id = intval($_GET['id']);
                     <li><a href="#">PlayStation</a></li>
                     <li><a href="#">Nintendo</a></li>
                     <li>
-                        <div class="search-container">
-                            <input style="height:25px" type="text" placeholder="Buscar" class="search-bar">
-                                <i class="fa-solid fa-magnifying-glass search-icon"></i>
-                        </div>
+                    <div class="search-container">
+    <input style="height:25px" type="text" placeholder="Buscar" class="search-bar" id="search-input">
+    <i class="fa-solid fa-magnifying-glass search-icon" onclick="searchPubli()"></i>
+</div>
+<div id="search-results"></div> <!-- El contenedor ahora solo está vacío al cargar la página -->
+
+<?php if (isset($result) && mysqli_num_rows($result) > 0 && isset($search_query)): ?>
+    <h3>Resultados de búsqueda:</h3>
+    <?php while ($row = mysqli_fetch_assoc($result)): ?>
+        <div class="search-item">
+            <h4>
+                <a href="ver_articulo.php?id=<?php echo $row['idPubli']; ?>">
+                    <?php echo htmlspecialchars($row['titulo']); ?>
+                </a>
+            </h4>
+        </div>
+    <?php endwhile; ?>
+<?php elseif (isset($search_query) && $search_query != ''): ?>
+    <div class="no-results">
+        <p>No se encontraron resultados para "<?php echo htmlspecialchars($search_query); ?>".</p>
+    </div>
+<?php endif; ?>
+
                     </li>
                     
                 </ul>
@@ -306,24 +327,74 @@ if (isset($_GET['status'])) {
     $message = "";
     if ($_GET['status'] == 1) {
         // insertado correctamente
-        $message = "Comentario agregado";
+        $message = "Tu comentario fue agregado";
     } else if ($_GET['status'] == 0) {
         // actualizado correctamente
         $message = "ERROR";
     }
-       
-    ?>   
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            Swal.fire({
-                icon: 'success',
-                title: "<?php echo $message ?>",
-                confirmButtonText: 'Aceptar'
-            });
+?>   
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        Swal.fire({
+            icon: 'success',
+            title: "<?php echo $message ?>",
+            confirmButtonText: 'Aceptar'
+        }).then(function() {
+            // Eliminar el parámetro 'status' de la URL
+            const urlParams = new URLSearchParams(window.location.search);
+            urlParams.delete('status');
+            window.history.replaceState({}, '', window.location.pathname + '?' + urlParams.toString());
         });
-    </script>
-    <?php
+    });
+</script>
+<?php
 }
 ?>
+<script>
+function searchPubli() {
+    const searchQuery = document.getElementById('search-input').value;
+
+    // Si el término de búsqueda está vacío, limpiar resultados y no continuar
+    if (searchQuery.trim() === '') {
+        document.getElementById('search-results').innerHTML = '';
+        return;
+    }
+
+    // Vaciar el contenedor de resultados antes de agregar nuevos
+    const resultsContainer = document.getElementById('search-results');
+    resultsContainer.innerHTML = ''; // Limpiar el contenedor
+
+    // Hacer la solicitud al servidor para obtener los resultados
+    fetch('../admin/php/search.php?q=' + encodeURIComponent(searchQuery))
+        .then(response => response.json())
+        .then(data => {
+            if (data.results.length > 0) {
+                resultsContainer.innerHTML = '<h3>Resultados de búsqueda:</h3>';
+                data.results.forEach(result => {
+                    resultsContainer.innerHTML += `
+                        <div class="search-item">
+                            <h4>
+                                <a href="ver-articulo.php?id=${result.idPubli}">
+                                    ${result.titulo}
+                                </a>
+                            </h4>
+                        </div>
+                    `;
+                });
+            } else {
+                resultsContainer.innerHTML = `<div class="no-results"><p>No se encontraron resultados para "${searchQuery}".</p></div>`;
+            }
+        })
+        .catch(error => {
+            console.error('Error al realizar la búsqueda:', error);
+        });
+}
+
+// Agregar un event listener al campo de búsqueda para ejecutar la función mientras se escribe
+document.getElementById('search-input').addEventListener('input', function() {
+    searchPubli();
+});
+</script>
+
 </body>
 </html>

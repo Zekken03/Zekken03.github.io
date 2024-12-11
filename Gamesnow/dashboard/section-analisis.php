@@ -74,10 +74,29 @@ $user_data = $usuarioAutenticado ? $_SESSION['user_data'] : null;
                     <li><a href="#">PlayStation</a></li>
                     <li><a href="#">Nintendo</a></li>
                     <li>
-                        <div class="search-container">
-                            <input style="height:25px" type="text" placeholder="Buscar" class="search-bar">
-                                <i class="fa-solid fa-magnifying-glass search-icon"></i>
-                        </div>
+                    <div class="search-container">
+    <input style="height:25px" type="text" placeholder="Buscar" class="search-bar" id="search-input">
+    <i class="fa-solid fa-magnifying-glass search-icon" onclick="searchPubli()"></i>
+</div>
+<div id="search-results"></div> <!-- El contenedor ahora solo está vacío al cargar la página -->
+
+<?php if (isset($result) && mysqli_num_rows($result) > 0 && isset($search_query)): ?>
+    <h3>Resultados de búsqueda:</h3>
+    <?php while ($row = mysqli_fetch_assoc($result)): ?>
+        <div class="search-item">
+            <h4>
+                <a href="ver_articulo.php?id=<?php echo $row['idPubli']; ?>">
+                    <?php echo htmlspecialchars($row['titulo']); ?>
+                </a>
+            </h4>
+        </div>
+    <?php endwhile; ?>
+<?php elseif (isset($search_query) && $search_query != ''): ?>
+    <div class="no-results">
+        <p>No se encontraron resultados para "<?php echo htmlspecialchars($search_query); ?>".</p>
+    </div>
+<?php endif; ?>
+
                     </li>
                     
                 </ul>
@@ -105,8 +124,7 @@ $user_data = $usuarioAutenticado ? $_SESSION['user_data'] : null;
                                     JOIN autores ON usuarios.idUsuario = autores.idUsuario
                                     JOIN multimedia ON publi.idMult = multimedia.idMult
                                     WHERE tipo.tipo = 'Analisis'
-                                    ORDER BY publi.idPubli ASC
-                                    LIMIT 5
+                                    ORDER BY publi.idPubli DESC
                                 ") or die($conexion->error);
                                     while ($filaPubli = mysqli_fetch_array($resPubli)) {
                                 ?>
@@ -211,6 +229,51 @@ $user_data = $usuarioAutenticado ? $_SESSION['user_data'] : null;
     <script src="./js/articulos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
-   
+    <script>
+function searchPubli() {
+    const searchQuery = document.getElementById('search-input').value;
+
+    // Si el término de búsqueda está vacío, limpiar resultados y no continuar
+    if (searchQuery.trim() === '') {
+        document.getElementById('search-results').innerHTML = '';
+        return;
+    }
+
+    // Vaciar el contenedor de resultados antes de agregar nuevos
+    const resultsContainer = document.getElementById('search-results');
+    resultsContainer.innerHTML = ''; // Limpiar el contenedor
+
+    // Hacer la solicitud al servidor para obtener los resultados
+    fetch('../admin/php/search.php?q=' + encodeURIComponent(searchQuery))
+        .then(response => response.json())
+        .then(data => {
+            if (data.results.length > 0) {
+                resultsContainer.innerHTML = '<h3>Resultados de búsqueda:</h3>';
+                data.results.forEach(result => {
+                    resultsContainer.innerHTML += `
+                        <div class="search-item">
+                            <h4>
+                                <a href="./ver-articulo.php?id=${result.idPubli}">
+                                    ${result.titulo}
+                                </a>
+                            </h4>
+                        </div>
+                    `;
+                });
+            } else {
+                resultsContainer.innerHTML = `<div class="no-results"><p>No se encontraron resultados para "${searchQuery}".</p></div>`;
+            }
+        })
+        .catch(error => {
+            console.error('Error al realizar la búsqueda:', error);
+        });
+}
+
+// Agregar un event listener al campo de búsqueda para ejecutar la función mientras se escribe
+document.getElementById('search-input').addEventListener('input', function() {
+    searchPubli();
+});
+</script>
+
 </body>
 </html>

@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $idUsuario = $_SESSION['user_data']['id'];
 
     // Inserta el comentario en la base de datos
-    $sql = "INSERT INTO Comentarios (idPubli, idUsuario, comentario, fecha) VALUES (?, ?, ?, NOW())";
+    $sql = "INSERT INTO comentarios (idPubli, idUsuario, comentario, fecha) VALUES (?, ?, ?, NOW())";
     $stmt = $conexion->prepare($sql);
     $stmt->bind_param("iis", $idPubli, $idUsuario, $comentario);
 

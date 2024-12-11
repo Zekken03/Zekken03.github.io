@@ -6,9 +6,9 @@
                 c.fecha AS fechaComentario,
                 u.nombre AS nombreUsuario,
                 p.titulo AS tituloPublicacion
-            FROM Comentarios c
-            JOIN Usuarios u ON c.idUsuario = u.idUsuario
-            JOIN Publi p ON c.idPubli = p.idPubli
+            FROM comentarios c
+            JOIN usuarios u ON c.idUsuario = u.idUsuario
+            JOIN publi p ON c.idPubli = p.idPubli
             ORDER BY c.fecha DESC;";
     $res = $conexion -> query($sql) or die($conexion->error);
 ?>
