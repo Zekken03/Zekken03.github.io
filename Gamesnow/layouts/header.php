@@ -59,7 +59,7 @@
                                         <hr class="dropdown-divider"/>
                                     </li>
                                     <li>
-                                        <a href="../admin./php/cerrar-sesion.php" class="dropdown-item">
+                                        <a href="../admin/php/cerrar-sesion.php" class="dropdown-item">
                                             <i class="bi bi-box-arrow-left"></i>&nbsp;&nbsp;Cerrar Sesión</a>
                                     </li>
                                 </ul>

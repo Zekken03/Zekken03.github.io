@@ -539,3 +539,4 @@ SELECT Publi.idPubli, Publi.titulo, Publi.contenido, Usuarios.nombre, Multimedia
 
 ALTER TABLE usuarios
 MODIFY COLUMN password VARCHAR(100);
+ALTER TABLE publi CHANGE título titulo VARCHAR(255);

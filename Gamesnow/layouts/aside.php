@@ -1,4 +1,4 @@
-<aside class="d-flex col-3 " style="width:15%;height: 300%;">
+<aside class="d-flex col-3 " style="width:15%;height: 550%;">
         <div class="text-white p-3 vh-100% w-100" >
             <h2 class="h5 text-center">GamesNow</h2>
             <nav>
